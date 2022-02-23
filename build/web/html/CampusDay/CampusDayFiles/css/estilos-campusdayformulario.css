@@ -1,0 +1,145 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+.material-icons {
+  /* Support for IE */
+  font-feature-settings: 'liga';
+}
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+section.imgPortada{
+	padding-top: 174px;
+	-webkit-box-shadow: 0px 4px 7px 0px rgba(0,0,0,0.46);
+-moz-box-shadow: 0px 4px 7px 0px rgba(0,0,0,0.46);
+box-shadow: 0px 4px 7px 0px rgba(0,0,0,0.46);
+}
+section.imgPortadaContacto{
+	padding-top: 115px;
+}
+.franjaLogos {
+	background: #ffffff;
+	align: center;
+}
+section.intro{
+	padding: 30px 30px;
+}
+.txt-inicio{
+	padding: 15px 35px;
+}
+section.agenda{
+	padding: 60px 30px;
+}
+section.conferencistas{
+	padding: 60px 30px;
+	background: #f5f5f5;
+}
+.txt-actividades{
+	padding: 15px 35px;
+	border-left:1px dotted #999;
+}
+section.fondo{
+	padding: 60px 30px;
+}
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+.material-icons.md-68 { font-size: 68px; }
+.material-icons.md-80 { font-size: 80px; }
+
+.navbar-default {
+  background-color: #f8f8f8 !important;
+  border-color: #e7e7e7 !important;
+  -webkit-box-shadow: 0px 4px 7px 0px rgba(0,0,0,0.46);
+-moz-box-shadow: 0px 4px 7px 0px rgba(0,0,0,0.46);
+box-shadow: 0px 4px 7px 0px rgba(0,0,0,0.46);
+}
+footer{
+	background: #584A93;
+	padding: 70px 50px 50px 50px;
+	margin: 0 0 0 0;
+	color: #ffffff;
+}
+.escuelafooter{
+	padding-top: 45px;
+	text-align: right;
+	padding-right: 40px;
+}
+.contacto {
+	border-right:1px dotted #999;
+	padding: 20px 20px;
+}
+#intro, #agenda, #becas {
+	width: 100%;
+	height: 150px;
+	margin-top: -150px;
+	z-index: -23;
+}
+.reloj {
+	color: #aaaaaa;
+}
+.actividad {
+	color:#024654;
+}
+article.redes ul {
+  list-style: none;
+}
+article.redes li {
+  display: inline-block;
+  padding: 1%;
+}
+.formato{
+	padding: 30px;
+	margin-top: 40px;
+	background-color: #99C7E6 !important;
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border: 0px solid #000000;
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.11);
+	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.11);
+	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.11);
+	text-align: right !important;
+}
+.logoescuela{
+	padding-top: 10px;
+}
+
+.redes img{
+	width: 70px;
+	padding: 15px;
+}
+/*ul.block li {
+   float: left;
+   width: 3%;
+   list-style: none;
+   padding: 5px;
+}*/
+
+/*.w3-content{max-width:980px;margin:auto}*/
+/*.w3-rest{overflow:hidden}*/
+.w3-display-container:hover
+.w3-display-hover{display:block}
+.w3-display-container:hover
+span.w3-display-hover{display:inline-block}
+.w3-display-hover{display:none}
+.w3-btn,.w3-button{border:none;display:inline-block;outline:0;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
+.w3-black,.w3-hover-black:hover{color:#fff!important;background-color:#000!important;}
+.w3-display-left{position:absolute;top:50%;left:0%;transform:translate(0%,-50%);-ms-transform:translate(-0%,-50%)}
+.w3-display-right{position:absolute;top:50%;right:0%;transform:translate(0%,-50%);-ms-transform:translate(0%,-50%)}
+
+
+@media (max-width: 800px){
+	.redes img{
+		width: 70px;
+	}
+	.formato{
+		text-align: left !important;
+	}
+	label {
+		text-align: left !important;
+	}
+}

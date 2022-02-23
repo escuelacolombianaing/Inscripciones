@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Campus Day Escuela</title>
+
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="shortcut icon" type="image/x-icon" href="CampusDayFiles/img/favicon.ico">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="CampusDayFiles/css/estilos-campusdayformulario.css">
+	<meta name="keywords" content="Campus Day Escuela – Campus Day – Campus – Escuela de Ingenieros Campus – Campus Escuela – Escuela de Ingenieros Campus Day – ECI Campus Day – Campus Day ECI – Campus Day Bogotá – Campus Day Bogotá 2018 – Campus Day 2018 – Escuela Campus Day 2018 – Gran Evento Campus – Gran Evento Campus Day 2018 – Escuela de Ingeniería Campus Day – Julio Garavito Campus Day – Julio Garavito Campus – Open Day – Open Day Escuela – Open Day Escuela de ingeniería – Escuela de Ingeniería Open Day 2018 – Campo Day – Campo Day Escuela – Campus Day Gratis – Campus Day Escuela Gratis – Estudiar Ingeniería – Ingenierías en Bogotá – Quiero estudiar ingeniería – Donde estudiar ingeniería">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge; IE=11; IE=10; IE=EmulateIE10; IE=9; IE=EmulateIE9; IE=8; IE=EmulateIE8; IE=7; IE=EmulateIE7; IE=5" >
+	<meta http-equiv="Content-Language" content="ES" />
+	<meta name="language" content="spanish" />
+	<meta name="author" content="Escuela Colombiana de Ingenieria Julio Garavito Julio Garavito" />
+	<meta name="copyright" content="Copyright (c) 2018" />
+	<meta name="description" content="Obtén tu ingreso gratis este 27 de octubre desde las 8AM. Ven con tus padres y conoce las Ingenierías que tenemos para ofrecerte." />
+	<meta name="abstract" content="Escuela Colombiana de Ingenieria Julio Garavito Julio Garavito - Vuelve a casa"/>
+	<link href="CampusDayFiles/css/validationEngine.jquery.css" type="text/css" media="screen" rel="stylesheet" />
+        <style>
+            input[type=number]::-webkit-outer-spin-button,
+            input[type=number]::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+            input[type=number] {
+                -moz-appearance:textfield;
+            }
+        </style>
+</head>
+<body>
+
+	<section class="intro">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3">
+					<center><img src="CampusDayFiles/img/logo-campusday.png" class="img-responsive" alt="logo campus day escuela"></center>
+				</div>
+				
+                            
+                                
+				<div class="col-sm-9">
+                                    <form method="post" action="/inscripcioneslinea/RegistroCampusDay" class="form-horizontal formato">
+
+
+							<!-- Multiple Radios (inline) -->
+							<div class="row form-group">
+								<div class="col-sm-12 col-md-3 col-lg-6">
+									<label class="control-label" for="extranjero">¿Es usted bachiller extranjero?</label>
+								</div>
+								<div class="col-sm-12 col-md-3">
+                                                                    <select name="extranjero" id="extranjero" class="form-control" required="" onchange="verificaExtranjero()">
+                                                                            <option value="">Seleccione</option>
+                                                                            <option value="1">Si</option>
+                                                                            <option value="0">No</option>
+                                                                        </select>
+                                                                    <script lang="javascript">
+                                                                        function verificaExtranjero(){
+                                                                            var extranjero=document.getElementById("extranjero").value;
+                                                                            if(extranjero==="0"){
+                                                                                document.getElementById("pais").required=false;
+                                                                                document.getElementById("pais").disabled = true;
+                                                                                document.getElementById("pais").style.visibility = "hidden";
+                                                                                document.getElementById("pais").value="";
+                                                                                document.getElementById("labelPais").style.visibility = "hidden";
+                                                                                document.getElementById("colegio").required=false;
+                                                                                document.getElementById("colegio").disabled = true;
+                                                                                document.getElementById("colegio").style.visibility = "hidden";
+                                                                                document.getElementById("colegio").value="";
+                                                                                document.getElementById("labelColegio").style.visibility = "hidden";
+                                                                            }else{
+                                                                                document.getElementById("pais").required=true;
+                                                                                document.getElementById("pais").disabled = false;
+                                                                                document.getElementById("pais").style.visibility = "visible";
+                                                                                document.getElementById("pais").value="";
+                                                                                document.getElementById("labelPais").style.visibility = "visible";
+                                                                                document.getElementById("colegio").required=true;
+                                                                                document.getElementById("colegio").disabled = false;
+                                                                                document.getElementById("colegio").style.visibility = "visible";
+                                                                                document.getElementById("colegio").value="";
+                                                                                document.getElementById("labelColegio").style.visibility = "visible";
+                                                                            }
+                                                                        }
+                                                                    </script>
+								</div>
+								<div class="col-sm-12 col-md-3 col-lg-6">
+									<label class="control-label" for="icfes">¿Ha presentado o está registrado para presentar examen de ESTADO en Colombia?</label>
+								</div>
+								<div class="col-sm-12 col-md-3">
+                                                                    <select name="icfes" id="icfes" class="form-control" required="" onchange="verificaIcfes()">
+                                                                            <option value="">Seleccione</option>
+                                                                            <option value="1">Si</option>
+                                                                            <option value="0">No</option>
+                                                                        </select>
+                                                                    <script lang="javascript">
+                                                                        function verificaIcfes(){
+                                                                            var icfes=document.getElementById("icfes").value;
+                                                                            if(icfes==="1"){
+                                                                                document.getElementById("snp").required=true;
+                                                                                document.getElementById("snp").disabled = false;
+                                                                                document.getElementById("snp").style.visibility = "visible";
+                                                                                document.getElementById("snp").value="";
+                                                                                document.getElementById("labelSnp").style.visibility = "visible";
+                                                                                document.getElementById("labelDoc").innerHTML="Tipo Documento identidad con el que presentó su Examen de Estado Icfes";
+                                                                                document.getElementById("labelNum").innerHTML="Número documento identidad con el que presentó su Exámen de Estado Icfes";
+                                                                            }else{
+                                                                                document.getElementById("snp").required=false;
+                                                                                document.getElementById("snp").disabled = true;
+                                                                                document.getElementById("snp").style.visibility = "hidden";
+                                                                                document.getElementById("snp").value="";
+                                                                                document.getElementById("labelSnp").style.visibility = "hidden";
+                                                                                document.getElementById("labelDoc").innerHTML="Tipo Documento identidad";
+                                                                                document.getElementById("labelNum").innerHTML="Número documento identidad";
+                                                                            }
+                                                                        }
+                                                                    </script>
+								</div>
+							</div>
+
+
+							<!-- Text input-->
+							<div class="row form-group">
+								<div class="col-sm-12 col-md-3">
+                                                                    <label id="labelPais" class="control-label" for="pais">País de procedencia</label>
+								</div>
+								<div class="col-sm-12 col-md-3">
+                                                                    <input value="" id="pais" name="pais" type="text" placeholder="país" class="form-control input-md">
+								</div>
+								<div class="col-sm-12 col-md-3">
+                                                                    <label id="labelColegio" class="controls-label" for="colegio">Nombre del Colegio</label>
+								</div>
+								<div class="col-sm-12 col-md-3">
+                                                                    <input value="" id="colegio" name="colegio" type="text" placeholder="colegio" class="form-control input-md" required="">
+								</div>
+							</div>
+														
+							<!-- Multiple Radios (inline) -->
+							<div class="row form-group">
+								<div class="col-sm-12 col-md-9 col-lg-6">
+									<label class="control-label" for="antes">¿Ha ingresado (matriculado) en alguna oportunidad anterior a un programa de pregrado en la Escuela?</label>
+								</div>
+								<div class="col-sm-12 col-md-3">
+                                                                        <select name="antes" id="antes" class="form-control" required="">
+                                                                            <option value="">Seleccione</option>
+                                                                            <option value="1">Si</option>
+                                                                            <option value="0">No</option>
+                                                                        </select>
+								</div>
+							</div>
+
+							<!-- Text input-->
+							<div class="row form-group">
+								<div class="col-sm-12 col-md-5 col-lg-6">
+								<label class="control-label" for="apellido1">Primer apellido del aspirante</label>
+								</div> 
+								<div class="col-sm-12 col-md-7 col-lg-6">
+									<input id="apellido1" name="apellido1" type="text" placeholder="primer apellido" class="form-control input-md" required="">
+								</div>
+							</div>
+
+							<!-- Text input-->
+							<div class="row form-group">
+								<div class="col-sm-12 col-md-5 col-lg-6">
+								<label class="control-label" for="apellido2">Segundo apellido del aspirante</label> 
+								</div> 
+								<div class="col-sm-12 col-md-7 col-lg-6">
+									<input id="apellido2" name="apellido2" type="text" placeholder="segundo apellido" class="form-control input-md" required="">
+
+								</div>
+							</div>
+
+							<!-- Text input-->
+							<div class="row form-group">
+								<div class="col-sm-12 col-md-5 col-lg-6">
+								<label class="control-label" for="nombre">Nombres completos del aspirante</label>  
+							</div>
+								<div class="col-sm-12 col-md-7 col-lg-6">
+									<input id="nombre" name="nombre" type="text" placeholder="nombres" class="form-control input-md" required="">
+
+								</div>
+							</div>
+
+							<!-- Text input-->
+							<div class="row form-group">
+								<div class="col-sm-12 col-md-3">
+									<label class="control-label" for="tel">Teléfono</label>
+								</div> 
+								<div class="col-sm-12 col-md-3">
+                                                                    <input id="tel" name="tel" type="number" placeholder="teléfono" class="form-control input-md" required="">
+								</div>
+								<div class="col-sm-12 col-md-3">
+									<label class="control-label" for="ciudad">Ciudad</label>  
+								</div>
+								<div class="col-sm-12 col-md-3">
+									<input id="ciudad" name="ciudad" type="text" placeholder="ciudad" class="form-control input-md" required="">
+								</div>
+							</div>
+                                                        <div class="row form-group">
+								<div class="col-sm-12 col-md-3">
+									<label class="control-label" for="mail">Correo electrónico</label>  
+								</div>
+								<div class="col-sm-12 col-md-3">
+                                                                    <input id="mail" name="mail" type="email" placeholder="e-mail" class="form-control input-md" required="">
+								</div>
+							</div>
+
+
+							<!-- Select Basic -->
+							<div class="row form-group">
+								<div class="col-sm-12 col-md-3">
+                                                                <label id="labelDoc" class="control-label" for="doc">Tipo Documento identidad con el que presentó su Examen de Estado Icfes</label>
+							</div>
+								<div class="col-sm-12 col-md-3">
+                                                                        <select id="tip_doc" name="tip_doc" class="form-control" required="">
+										<option value="">Seleccione</option>
+										<option value="TI">TI</option>
+										<option value="CC">CC</option>
+										<option value="CE">CE</option>
+										<option value="PC">Pasaporte Colombiano</option>
+										<option value="PE">Pasaporte Extranjero</option>
+										<option value="CR">Contraseña Registraduría</option>
+									</select>
+								</div>
+								<div class="col-sm-12 col-md-3">
+								<label id="labelNum" class="control-label" for="doc">Número documento identidad con el que presentó su Exámen de Estado Icfes</label> 
+								</div> 
+								<div class="col-sm-12 col-md-3">
+                                                                    <input id="doc" name="doc" type="number" placeholder="número" class="form-control input-md">
+								</div>
+							</div>
+
+							<!-- Text input-->
+							<div class="row form-group">
+								<div class="col-sm-12 col-md-3">
+								<label class="control-label" for="celular">Número Celular</label> 
+								</div> 
+								<div class="col-sm-12 col-md-3">
+                                                                    <input id="celular" name="celular" type="number" placeholder="celular" class="form-control input-md" required="">
+								</div>
+								<div class="col-sm-12 col-md-3">
+                                                                    <label id="labelSnp" class="control-label" for="snp">Prueba de estado <small>(únicamente versión año 2000  en adelante). Número de registro SNP</small></label>  
+                                                                </div>
+								<div class="col-sm-12 col-md-3">
+                                                                    <input value="" id="snp" name="snp" type="text" placeholder="SNP" class="form-control input-md">
+
+								</div>
+							</div>
+
+							<!-- Select Basic -->
+							<div class="row form-group">
+								<div class="col-sm-12 col-md-3">
+								<label class="control-label" for="programa">Carrera Profesional</label>
+							</div>
+								<div class="col-sm-12 col-md-6">
+                                                                        <select id="programa" name="programa" class="form-control" required="">
+										<option value="">Seleccione</option>
+										<option value="19">Administración de Empresas</option>
+										<option value="18">Economía</option>
+										<option value="264">Ingeniería Ambiental</option>
+										<option value="262">Ingeniería Biomédica</option>
+										<option value="13">Ingeniería Civil</option>
+										<option value="15">Ingeniería de Sistemas</option>
+										<option value="14">Ingeniería Eléctrica</option>
+										<option value="17">Ingeniería Electrónica</option>
+										<option value="16">Ingeniería Industrial</option>
+										<option value="260">Ingeniería Mecánica</option>
+										<option value="20">Matemáticas</option>
+									</select>
+								</div>
+								<div class="col-sm-12 col-md-3 submit">
+                                                                    <br><br><br><input class="btn btn-success btn-lg" type="submit" onclick="validaCampos()" value="Enviar solicitud"/>
+								</div>
+							</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>  	
+
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-5 col-md-5">
+					<strong><a href="https://www.escuelaing.edu.co/uploads/descargables/2810_politica_para_el_tratamiento_de_datos_personales.pdf" target="_blank">Recolección y autorización para el manejo de datos personales</a></strong><br>
+					<strong>Escuela Colombiana de Ingeniería Julio Garavito</strong> <br>
+					Ak 45 No. 205 - 59 Autopista Norte, costado occidental. <br>
+					Contact Center: 57(1) 668 3600 <br>
+					Línea Nacional Gratuita: 018000112668 <br>
+					www.escuelaing.edu.co <br>
+					Bogotá - Colombia <br><br>
+
+					<small>
+						Personería Jurídica 086 de enero 19 de 1973. <br>
+						Acreditación institucional de alta calidad. <br>
+						Res. 20273 del 27 de noviembre de 2014. (Vigencia 4 años). <br>
+						Vigilada Mineducación.
+					</small><br><br>
+
+					<small>© Dirección de Mercadeo y Comunicaciones Internas</small><br><br>
+				</div>
+
+				<div class="col-sm-7 col-md-7">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3975.9262331134787!2d-74.04478278578759!3d4.78267549652671!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f85e32ae0ca4b%3A0x5edd4c74e8f7220c!2sESCUELA+COLOMBIANA+DE+INGENIER%C3%8DA+JULIO+GARAVITO!5e0!3m2!1ses!2ses!4v1479245437319" width="100%" height="260" frameborder="0" style="border:0" allowfullscreen></iframe>
+				</div>
+
+			</div>
+		</div>
+	</footer>
+
+
+
+    <script lang="javascript">
+        
+        function validaCampos(){
+            
+            document.getElementById("pais").value=convertTildes(document.getElementById("pais").value);
+            document.getElementById("colegio").value=convertTildes(document.getElementById("colegio").value);
+            document.getElementById("apellido1").value=convertTildes(document.getElementById("apellido1").value);
+            document.getElementById("apellido2").value=convertTildes(document.getElementById("apellido2").value);
+            document.getElementById("nombre").value=convertTildes(document.getElementById("nombre").value);
+            document.getElementById("ciudad").value=convertTildes(document.getElementById("ciudad").value);
+            return true;
+        }
+        
+        function convertTildes(str) {
+    var out = "", flag = 0;
+    for (i = 0; i < str.length; i++) {
+    if ((str.charAt(i) != "í") && (str.charAt(i) != "á") && (str.charAt(i) != "é") && (str.charAt(i) != "ó") && (str.charAt(i) != "ú")
+    && (str.charAt(i) != "Á") && (str.charAt(i) != "É") && (str.charAt(i) != "Í") && (str.charAt(i) != "Ó") && (str.charAt(i) != "Ú")) {
+    out += str.charAt(i);
+    flag = 0;
+    }
+    else {
+    if ((flag == 0) && (str.charAt(i) == "í")) {
+    out += "i";
+    flag = 1;
+    }
+    if ((flag == 0) && (str.charAt(i) == "á")) {
+    out += "a";
+    flag = 1;
+    }
+    if ((flag == 0) && (str.charAt(i) == "é")) {
+    out += "e";
+    flag = 1;
+    }
+    if ((flag == 0) && (str.charAt(i) == "ó")) {
+    out += "o";
+    flag = 1;
+    }
+    if ((flag == 0) && (str.charAt(i) == "ú")) {
+    out += "u";
+    flag = 1;
+    }
+    if ((flag == 0) && (str.charAt(i) == "Á")) {
+    out += "A";
+    flag = 1;
+    }
+    if ((flag == 0) && (str.charAt(i) == "É")) {
+    out += "E";
+    flag = 1;
+    }
+    if ((flag == 0) && (str.charAt(i) == "Í")) {
+    out += "I";
+    flag = 1;
+    }
+    if ((flag == 0) && (str.charAt(i) == "Ó")) {
+    out += "O";
+    flag = 1;
+    }
+    if ((flag == 0) && (str.charAt(i) == "Ú")) {
+    out += "U";
+    flag = 1;
+    }
+    }
+    }
+    return out;
+    }
+    </script>
+
+	<!--SCRIPT BOOTSTRAP--> 
+	<script src="CampusDayFiles/js/jquery.js"></script>
+	<script src="//code.jquery.com/jquery-latest.jS"></script>
+	<script src="CampusDayFiles/js/bootstrap.min.js"></script>
+	<script src="CampusDayFiles/js/main.js"></script>
+
+
+	<script src="CampusDayFiles/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+	<script src="CampusDayFiles/js/jquery.validationEngine-es.js" type="text/javascript" charset="utf-8"></script>
+	<script src="CampusDayFiles/js/custom.js" type="text/javascript" charset="utf-8"></script>
+
+</body>
+</html>

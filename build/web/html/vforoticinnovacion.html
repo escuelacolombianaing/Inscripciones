@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="es-ES">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+<meta name="title" content="cuarto foro abierto tic, innovaciÃ³n y sociedad" description="El repunte del sector TIC colombiano en lo rankings mundiales, Ã­ndices ICT Development  (IDI-ITU), Netwok Readiness (NRI-WEF) y Doing Business del BM, evidencian la mejora constante de su infraestructura nacional de TIC y su asequibilidad"/>
+<title>FORO: TIC</title>
+<link href="css/estilos-foro.css" type="text/css" rel="stylesheet" media="all"/>
+<link rel="shortcut icon" type="img/favicon.png"/>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+<script language="javascript" type="text/javascript" src="js/jQuery.js"></script>
+</head>
+
+<body>
+ <!--scroll-->
+         <script>
+            $(document).ready(function() {
+            $(".scroll").click(function(event){     
+            event.preventDefault();
+            $('html,body').animate({scrollTop:$(this.hash).offset().top - 100}, 1000);
+            });
+            });
+        </script>
+ <!--end scroll-->
+
+ 
+<!--inicio container-->
+<div id="container">
+	<a id="inicio"></a>
+	<header>
+    	<img class="logo-escueala" src="img/logo-ESCUELA.svg"/>
+        <nav>
+        	<ul>
+            	<li><a href="#agenda" class="scroll">agenda</a></li>
+                <li><a href="#informacion" class="scroll">informacion detallada</a></li>
+                <li><a href="#conferencistas" class="scroll">conferencistas y panelistas</a></li>
+            </ul>
+        </nav>
+        <img class="img-principal" src="img/header-landing.jpg"/>
+    </header>
+    <div id="contacto">
+    	<h1>Contacto</h1>
+        <span>
+        	Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estandar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usÃ³ una galerÃ­a de textos y los mezclÃ³ de tal manera que logrÃ³ hacer un libro de textos especimen.
+        </span>
+    </div>
+  <div id="formulario">
+			<form action="http://localhost:8080/inscripcioneslinea/ForoTIC" method="post" name="form1" id="form1" onSubmit="return comprueba( );">
+                              <input name="idevento"  type="hidden" id="doc" value="268">
+
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Nombres</td>
+                    <td>Apellidos</td>
+                    </tr>
+                  <tr>
+                    <td>
+                      <input name="nombre"  type="text" id="nombre" onBlur="MM_validateForm('nombre','','R');return document.MM_returnValue" />
+                    </td>
+                    <td>
+                      <input name="apellido"  type="text" id="apellido" onBlur="MM_validateForm('apellido','','R');return document.MM_returnValue" />
+                    </td>
+                    </tr>
+                  <tr>
+                    <td>Documento</td>
+                    <td>Celular</td>
+                    </tr>
+                  <tr>
+                    <td>
+                      <input name="documento" type="text" id="documento" onBlur="MM_validateForm('documento','','RisNum');return document.MM_returnValue" />
+                    </td>
+                    <td>
+                      <input name="celular" type="text" id="celular" onBlur="MM_validateForm('celular','','RisNum');return document.MM_returnValue" />
+                    </td>
+                    </tr>
+                  <tr>
+                    <td>Correo electr&oacute;nico</td>
+                    <td rowspan="2">
+                    <table>
+                      <tr>
+                        <td>
+                        	<input class="boton" type="submit" name="button" id="button" value="Enviar">
+                        </td>
+                        </tr>
+                    </table></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input name="email" type="text" id="email" onBlur="MM_validateForm('email','','RisEmail');return document.MM_returnValue" />
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+            </form>
+    </div>
+    <section>
+    <a id="agenda"></a>
+    	<h1>agenda</h1>
+    	<article class="agenda">
+        	<table class="t-agenda" cellpadding="0" cellspacing="5">
+              <tr>
+                <td width="1%" align="center" valign="middle"><img src="img/8-30.jpg" width="29" height="29" alt="hora 8 30 am"></td>
+                <td width="8%" align="center" valign="middle">8:30 a.m.</td>
+                <td width="9%" align="center" valign="middle"><img src="img/iconos-lista.jpg" width="29" height="29" alt="registro"></td>
+                <td colspan="2" align="left" valign="middle">Registro</td>
+              </tr>
+              <tr>
+                <td colspan="5" align="center" valign="middle"><hr></td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle"><img src="img/8-45.jpg" width="29" height="29" alt="hora 8 45 am"></td>
+                <td align="center" valign="middle">8:45 a.m.</td>
+                <td align="center" valign="middle"><img src="img/iconos-mesas.jpg" width="29" alt="bienvenida"></td>
+                <td width="45%" align="left" valign="middle">Bienvenida e instalaciÃ³n  del IV Foro TIC, innovaciÃ³n y sociedad</td>
+                <td width="45%" align="left" valign="middle"><em><strong>Ingeniero GermÃ¡n Eduardo Acero Riveros. </strong></em><br/>Rector<br/> Escuela Colombiana de IngenierÃ­a Julio  Garavito</td>
+              </tr>
+              <tr>
+                <td colspan="5" align="center" valign="middle"><hr></td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle"><img src="img/9.jpg" width="29" height="29" alt="hora 9 am"></td>
+                <td align="center" valign="middle">9:00 a.m.</td>
+                <td align="center" valign="middle"><img src="img/iconos-charla.jpg" width="29" height="29" alt="conferencia"></td>
+                <td align="left" valign="middle">Conferencia internacional:  &ldquo;OptimizaciÃ³n del espectro, banda ancha mÃ³vil y sistemas de 5G&rdquo;</td>
+                <td align="left" valign="middle"><p><em><strong>Ingeniero Jaime LÃ³pez  SÃ¡nchez, PhD.</strong><br>
+                </em>TEAM / ASTELLIA<br/>EspaÃ±a.</p></td>
+              </tr>
+              <tr>
+                <td colspan="5" align="center" valign="middle"><hr></td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle"><img src="img/10.jpg" width="29" height="29" alt="hora 10 am"></td>
+                <td align="center" valign="middle">10:00 a.m.</td>
+                <td align="center" valign="middle"><img src="img/iconos-charla.jpg" width="29" height="29" alt="conferencia"></td>
+                <td align="left" valign="middle">Conferencia nacional:  &ldquo;Estudio prospectivo del acceso inalÃ¡mbrico a internet de banda ancha en zonas  rurales de Colombia&rdquo;</td>
+                <td align="left" valign="middle"><em><strong>Ingenieros Guillermo Teuta GÃ³mez<br/>Carlos AndrÃ©s Agualimpia Arriaga.</strong></em><br/> Investigadores. <br/>Escuela Colombiana de IngenierÃ­a Julio Garavito.</td>
+              </tr>
+              <tr>
+                <td colspan="5" align="center" valign="middle"><hr></td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle"><img src="img/11.jpg" width="29" height="29" alt="hora 11 am"></td>
+                <td align="center" valign="middle">11:00 a.m.</td>
+                <td align="center" valign="middle"><img src="img/iconos-charla.jpg" width="29" height="29" alt="conferencia"></td>
+                <td align="left" valign="middle">Panel central <br/>TIC,  innovaciÃ³n y sociedad:<strong> </strong>Banda ancha mÃ³vil y dividendo social TIC<br><br/>
+                Moderador:<br/>Ingeniero  Guillermo Teuta GÃ³mez, <br/>Escuela Colombiana de IngenierÃ­a Julio Garavito</p></td>
+                <td align="left" valign="middle">
+                	<em><strong>Dr. Juan Manuel  Wilches DurÃ¡n.</strong></em> <br/>Director de la ComisiÃ³n de RegulaciÃ³n de Comunicaciones (CRC)<br><br/>
+					<em><strong>Dr. Ã“scar LeÃ³n  SuÃ¡rez.</strong></em><br/>Director de la Agencia Nacional del Espectro (ANE)<br><br/>
+					<em><strong>Dr. Luis Fernando  Lozano Mier.</strong></em> <br/>Director de Conectividad del MinTIC<br><br/>
+					<em><strong>Ing. Mario A. CastaÃ±o GonzÃ¡lez. </strong></em><br/>Subdirector tÃ©cnico  de CINTEL<br><br/>
+					<em><strong>Ing. Marlon Torres  Caicedo.</strong></em><br/> Gerente de asuntos tÃ©cnicos regulatorios de TIGO<br></br/>
+					<em><strong>Ing. JuliÃ¡n Cardona Castro.</strong></em> <br/>Presidente de ACIEM</td>
+              </tr>
+              <tr>
+                <td colspan="5" align="center" valign="middle"><hr></td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle"><img src="img/12-45.jpg" width="29" height="29" alt="hora 12 45 pm"></td>
+                <td align="center" valign="middle">12:45 p.m.</td>
+                <td align="center" valign="middle"><img src="img/iconos-charla.jpg" width="29" height="29" alt="conferencia"></td>
+                <td colspan="2" align="left" valign="middle">Conclusiones finales y  cierre del foro</td>
+              </tr>
+              <tr>
+                <td colspan="5" align="center" valign="middle"><hr></td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle"><img src="img/1.jpg" width="29" height="29" alt="hora 1 pm"></td>
+                <td align="center" valign="middle">1:00 p.m.</td>
+                <td align="center" valign="middle"><img src="img/iconos-almuerzo.jpg" width="29" height="29" alt="acto especial"></td>
+                <td colspan="2" align="left" valign="middle">Acto especial: Directivos  Escuela, panelistas y conferencistas </td>
+              </tr>
+            </table>
+        </article>
+        
+        <article class="informacion">
+        <a id="informacion"></a>
+        	<h1>informaciÃ³n detallada</h1>
+        	<ul>
+            	<li><h4>introducciÃ³n</h4>
+                	<span>
+                    	El repunte del sector TIC colombiano en lo rankings mundiales, Ã­ndices ICT Development  (IDI-ITU), Netwok Readiness (NRI-WEF) y Doing Business del BM, evidencian la mejora constante de su infraestructura nacional de TIC y su asequibilidad, el aumento en los usuarios y conexiones a internet de banda ancha fija y mÃ³vil y,  la existencia de un â€œsistema regulatorio con instituciones fuertes y con bajos costos de transacciÃ³nâ€�, gracias a las polÃ­ticas, programas y proyectos del Gobierno Nacional y el MinTIC de los Ãºltimos cuatro aÃ±os. Sin embargo, segÃºn el World Economic Forum, â€œla persistencia de deficiencias en las capacidades de innovaciÃ³n dificulta la explotaciÃ³n del potencial de la regiÃ³n latinoamericana para aprovechar plenamente el uso de las TIC, desarrollar la capacidad de competencia y reducir la brecha digitalâ€�.<br><br/>
+                        
+El acelerado crecimiento de los usuarios mÃ³viles y su gran demanda por aplicaciones y servicios de banda ancha mÃ³vil, presionan constantemente la asignaciÃ³n de nuevas bandas del espectro radioelÃ©ctrico como la del â€œdividendo digitalâ€�. Y atendiendo a las directrices dadas por la UIT a los Estados miembros,  en el sentido de â€œtransformar el dividendo digital en beneficios sociales y crecimiento econÃ³micoâ€�, Colombia debe establecer, con urgencia, medidas de armonizaciÃ³n y asignaciÃ³n de la banda de 700 MHz para obtener el mejor provecho en el Ã¡mbito econÃ³mico y social.<br><br/>
+
+El gran reto de los paÃ­ses en desarrollo que, como Colombia, han sido reconocidos como lÃ­deres en el despliegue de infraestructura de transporte y acceso TIC, es convertir dichas tecnologÃ­as en facilitadoras de la innovaciÃ³n que incrementen la productividad a la industria y a los servicios, pero que al mismo tiempo permitan ser generadoras de inclusiÃ³n y equidad social en sus diferentes regiones, haciendo realidad lo que podrÃ­amos denominar el â€œdividendo social de las TICâ€�.
+                    </span>
+                </li>
+                
+                <li><h4>propÃ³sito</h4>
+                	<span>
+                    	La Escuela Colombiana de IngenierÃ­a Julio Garavito en su propÃ³sito misional de formar recurso humano con fundamento tÃ©cnico, crÃ­tico y comprometido con la bÃºsqueda de soluciones socialmente sostenibles, en el contexto de la realidad colombiana, ha venido promoviendo este tipo de eventos, como un espacio de encuentro y reflexiÃ³n de su comunidad con expertos y especialistas del sector y con los diferentes actores sociales.<br><br/> 
+                         
+La MaestrÃ­a en IngenierÃ­a ElectrÃ³nica y su Grupo de InvestigaciÃ³n EcitrÃ³nica desarrolla habitualmente proyectos de investigaciÃ³n e innovaciÃ³n de diversa Ã­ndole, con potencial de aplicaciÃ³n en lo tecnolÃ³gico, organizacional y regulatorio. Con su investigaciÃ³n mÃ¡s reciente sobre el â€œacceso inalÃ¡mbrico a internet de banda ancha en zonas rurales de Colombiaâ€� espera contribuir significativamente a las discusiones del sector TIC, en el Ã¡mbito local y nacional, concretamente en lo relacionado con la gestiÃ³n del espectro y el impacto de las nuevas tecnologÃ­as mÃ³viles.
+                    </span>
+                </li>
+                
+                <li><h4>dirigido a</h4>
+                	<span>
+                    	Directores de planeaciÃ³n y de asuntos regulatorios de las empresas operadoras de redes y servicios del Sector TIC, funcionarios y asesores de organismos de planeaciÃ³n, regulaciÃ³n y control sectorial, expertos e investigadores de la industria TIC  y de Centros de desarrollo tecnolÃ³gico del sector, profesores y estudiantes de programas de maestrÃ­as y carreras profesionales relacionadas con las TIC en general.
+                    </span>
+                </li>
+                <li class="ultimo"><h4>lugar</h4>
+                	<span>
+                    	El IV Foro abierto TIC, innovaciÃ³n y sociedad se realizarÃ¡ el 15 de abril de 2015 en el Aula MÃ¡xima  de la Escuela Colombiana de IngenierÃ­a Julio Garavito  (Autopista Norte No.205 â€“ 59, Bloque C, primer piso, de 8:45 a.m. a 12:45 p.m.
+                    </span>
+                </li>
+                               
+                <li><h4>metodologÃ­a</h4>
+                	<span>
+                    	Durante el Foro se presentarÃ¡n dos conferencias de actualidad y se desarrollarÃ¡ un pÃ¡nel central con representantes de los organismos del Estado del sector TIC, los operadores de servicios mÃ³viles, la academia y los gremios, con el objeto de abordar los beneficios y retos de las nuevas tecnologÃ­as, asÃ­ como el uso del â€œdividendo digitalâ€� como motor de desarrollo del paÃ­s, y generador de inclusiÃ³n y equidad social.
+                    </span>
+                </li>
+                
+
+            </ul>
+        </article>
+       
+        <article class="conferencistas">
+         <a id="conferencistas"></a>
+        	<h1>conferencistas y panelistas</h1>
+            	<ul>
+                	<li><img class="img-conferencista" src="img/juanwilches.jpg"/>
+                    	<h2>Juan Manuel Wilches DurÃ¡n</h2>
+                    	<h3>Director Ejecutivo de la ComisiÃ³n de RegulaciÃ³n de Comunicaciones -CRC</h3>
+                    	<span>
+                        	Ingeniero electrÃ³nico de la Pontificia Universidad Javeriana, MBA, de la Schulich School of Business, York University, Toronto (CanadÃ¡). Su experiencia laboral en Colombia ha sido como asesor y lÃ­der de proyectos de la ComisiÃ³n de RegulaciÃ³n de Telecomunicaciones, hoy CRC; en CanadÃ¡ como consultor de regulaciÃ³n y servicios de telecomunicaciones en Kazam Group. A su regreso a Colombia, entrÃ³ a formar parte del grupo de asesores de la Agencia Nacional del Espectro (ANE), para luego ocupar el cargo de Subdirector de GestiÃ³n y PlaneaciÃ³n TÃ©cnica en la misma instituciÃ³n. Actualmente, se desempeÃ±a como Director Ejecutivo de la ComisiÃ³n de RegulaciÃ³n de Comunicaciones (CRC), entidad reguladora de Colombia.
+                        </span>
+                    </li>
+                    
+                    <li><img class="img-conferencista" src="img/oscarsuarez.jpg"/>
+                    	<h2>Oscar LeÃ³n Suarez</h2>
+                    	<h3>Director Ejecutivo de la Agencia Nacional del Espectro - ANE</h3>
+                        <span>
+                        	Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estÃ¡ndar de las industrias desde el aÃ±o 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usÃ³ una galerÃ­a de textos y los mezclÃ³ de tal manera que logrÃ³ hacer un libro de textos especimen. No sÃ³lo sobreviviÃ³ 500 aÃ±os, sino que tambien ingresÃ³ como texto de relleno en documentos electrÃ³nicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creaciÃ³n de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y mÃ¡s recientemente con software de autoediciÃ³n, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.
+                        </span>
+                    </li>
+                    
+                    <li><img class="img-conferencista" src="img/luislozano.jpg"/>
+                    	<h2>Luis Fernando Lozano Mier</h2>
+                    	<h3>Director de conectividad del Ministerio de TecnologÃ­as de InformaciÃ³n y las comunicaciones - MinTIC</h3>
+                        <span>
+                        	Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estÃ¡ndar de las industrias desde el aÃ±o 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usÃ³ una galerÃ­a de textos y los mezclÃ³ de tal manera que logrÃ³ hacer un libro de textos especimen. No sÃ³lo sobreviviÃ³ 500 aÃ±os, sino que tambien ingresÃ³ como texto de relleno en documentos electrÃ³nicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creaciÃ³n de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y mÃ¡s recientemente con software de autoediciÃ³n, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.
+                        </span>
+                    </li>
+                    
+                    <li><img class="img-conferencista" src="img/jaimelopez.jpg"/>
+                    	<h2>Jaime LÃ³pez SÃ¡nchez</h2>
+                    	<h3>R&D Research Engineer ITEAM/ASTELLIA, EspaÃ±a</h3>
+                        <span>
+                        	Ingeniero electrÃ³nico de la Universidad Distrital Francisco JosÃ© de Caldas, Doctor en Telecomunicaciones de la Universidad PolitÃ©cnica de Valencia (EspaÃ±a) y mÃ¡ster en TecnologÃ­as, Sistemas y Redes, de la misma universidad. Investigador del Instituto de Telecomunicaciones y Aplicaciones Multimedia (iTEAM) de la UPV, con mÃºltiples publicaciones sobre planificaciÃ³n y optimizaciÃ³n de TelevisiÃ³n Digital Terrestre, y redes mÃ³viles de nueva generaciÃ³n. Ha participado en varios proyectos de EspaÃ±a y la Comunidad Europea. En Colombia trabajÃ³ como ingeniero de emisiÃ³n del Canal Caracol y actualmente trabaja con la firma Astellia en EspaÃ±a.
+                        </span>
+                    </li>
+
+                    <li><img class="img-conferencista" src="img/jaimelopez.jpg"/>
+                    	<h2>Marlon Torres Caicedo</h2>
+                    	<h3>Gerente de asuntos tÃ©cnicos y regulatorios, Tigo - UNE</h3>
+                        <span>
+                        	Ingeniero electrÃ³nico de la Universidad Distrital Francisco JosÃ© de Caldas, con especializaciÃ³n en administraciÃ³n de empresas de la Universidad del Rosario, con 20 aÃ±os de experiencia en el sector de las telecomunicaciones donde ha desarrollado  diferentes proyectos en empresas como: Comcel, Nortel Networks, EPM y Colombia mÃ³vil. ParticipÃ³ en  el inicio (starup)  de las redes mÃ³viles de Comcel y Tigo, la implementaciÃ³n de nuevas tecnologÃ­as como 3,5G y LTE, y la  implementaciÃ³n de los primeros operadores mÃ³viles virtuales en el paÃ­s.
+                        </span>
+                    </li>
+                                        
+                    <li><img class="img-conferencista-largos" src="img/mariocastano.jpg"/>
+                    	<h2>Mario A. CastaÃ±o GonzÃ¡lez</h2>
+                    	<h3>Director TÃ©cnico del Centro de InvestigaciÃ³n de las Telecomunicaciones - CINTEL</h3>
+                        <span>
+                        	Ingeniero elÃ©ctrico y posgrado en TelemÃ¡tica de la Universidad de los Andes, posgrados en Gerencia de IngenierÃ­a y EconomÃ­a de la Universidad Javeriana. TrabajÃ³ en las Ã¡reas de investigaciÃ³n, desarrollo, planeaciÃ³n y mercadeo de proyectos de redes y servicios de telecomunicaciones e informÃ¡ticos en el Centro de Investigaciones de la Facultad de IngenierÃ­a (CIFI) de la Universidad de los Andes, el Centro de Investigaciones TecnolÃ³gicas IKERLAN (EspaÃ±a) y en el ITEC-TELECOM. Actualmente es el Director TÃ©cnico de CINTEL, en donde coordina las actividades del Centro y lleva a cabo investigaciones, estudios y trabajos de asesorÃ­a y capacitaciÃ³n en los aspectos tecnolÃ³gicos, estratÃ©gicos y regulatorios de las tecnologÃ­as de la informaciÃ³n y las comunicaciones (TIC), con Ã©nfasis profesional en anÃ¡lisis de mercados, estrategia empresarial, innovaciÃ³n y oportunidades de negocio para empresas de base tecnolÃ³gica. Ha sido catedrÃ¡tico de posgrado y de educaciÃ³n continuada en la Universidad de los Andes y ha intervenido como conferencista en mÃºltiples congresos y seminarios nacionales e internacionales.
+                        </span>
+                    </li>
+                    
+                    <li><img class="img-conferencista-largos" src="img/guillermoteuta.jpg"/>
+                    	<h2>Guillermo Teuta GÃ³mez</h2>
+                        <h3>Profesor asociado e investigador de la Escuela Colombiana de IngenierÃ­a Julio Garavito</h3>
+                        <span class="largos">
+                        	Ingeniero electrÃ³nico  de la Universidad de Antioquia, con especializaciÃ³n en Telecomunicaciones y magÃ­ster en IngenierÃ­a de la Universidad Pontificia Bolivariana. TrabajÃ³ como especialista en planeaciÃ³n y analista de proyectos de telecomunicaciones en InterconexiÃ³n ElÃ©ctrica S.A. "ISA" E.S.P., MedellÃ­n, gerente de servicios teleinformÃ¡ticos y gerente de proyectos en el  Centro de InvestigaciÃ³n de las Telecomunicaciones -CINTEL-, BogotÃ¡ D.C.. Es profesor de planta de la Escuela, ademÃ¡s, se ha  desempeÃ±ado en cargos administrativos, tales como: Director de la EspecializaciÃ³n en TelemÃ¡tica aplicada a Negocios por Internet, , Coordinador de investigaciÃ³n e  innovaciÃ³n en la VicerrectorÃ­a AcadÃ©mica y Coordinador de prÃ¡ctica profesional en el Programa de IngenierÃ­a ElectrÃ³nica. Como Profesor de la Escuela ha diseÃ±ado y desarrollado diferentes cursos para pregrado y pogrado a los programas de IngenierÃ­a de Sistemas, IngenierÃ­a ElectrÃ³nica y AdministraciÃ³n de Empresas. Forma parte de la Base de Datos de peritos de la ComisiÃ³n de RegulaciÃ³n de Comunicaciones (CRC) de Colombia y es experto evaluador para el Programa Iberoamericano de Ciencia y TecnologÃ­a para el Desarrollo (CYTED) en las Ã¡reas de TIC y Ciencia & Sociedad.
+                        </span>
+                    </li>
+                    
+                    <li><img class="img-conferencista" src="img/carlosagualimpia.jpg"/>
+                    	<h2>Carlos AndrÃ©s Agualimpia Arriaga</h2>
+                        <h3>Profesor de cÃ¡tedra e investigador, Escuela Colombiana de IngenierÃ­a Julio Garavito</h3>
+                        <span>
+                        	Ingeniero electrÃ³nico y especialista en TelemÃ¡tica y Negocios por Internet de la Escuela Colombiana de IngenierÃ­a Julio Garavito, magÃ­ster en IngenierÃ­a ElectrÃ³nica de la Pontificia Universidad Javeriana y diplomado en Docencia en IngenierÃ­a y en Redes de Datos de la misma universidad. En  la Escuela Colombiana de IngenierÃ­a se desempeÃ±Ã³ como Decano del Programa de IngenierÃ­a ElectrÃ³nica, Director (E) de la MaestrÃ­a en IngenierÃ­a ElectrÃ³nica, Director del Centro de Estudios de ElectrÃ³nica BÃ¡sica y actualmente es profesor de cÃ¡tedra. Ha sido, ademÃ¡s, Gerente de TecnologÃ­a de la Empresa Master Soluciones ElectrÃ³nicas y consultor independiente en temas relacionados con las TIC. Actualmente se desempeÃ±a como Decano Asociado de IngenierÃ­a de Sistemas y Telecomunicaciones e IngenierÃ­a ElectrÃ³nica de la Universidad Sergio Arboleda.
+                        </span>                    
+                    </li>
+                    
+                    <li><img class="img-conferencista" src="img/juliancardona.jpg"/>
+                    	<h2>JuliÃ¡n Cardona Castro</h2>
+                        <h3>Presidente AsociaciÃ³n Colombiana de Ingenieros - ACIEM</h3>
+                        <span>
+                        	Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estÃ¡ndar de las industrias desde el aÃ±o 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usÃ³ una galerÃ­a de textos y los mezclÃ³ de tal manera que logrÃ³ hacer un libro de textos especimen. No sÃ³lo sobreviviÃ³ 500 aÃ±os, sino que tambien ingresÃ³ como texto de relleno en documentos electrÃ³nicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creaciÃ³n de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y mÃ¡s recientemente con software de autoediciÃ³n, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.
+                        </span>
+                    </li>                
+                </ul>
+        </article>
+    </section>
+    
+    <footer>
+    	<span class="programa">
+            Escuela Colombiana de IngenierÃ­a Julio Garavito<br/>
+            Programa de IngenierÃ­a ElectrÃ³nica
+        </span>
+    	<span class="direccion">
+            AK.45 No.205-59 (Autopista Norte)<br/>
+            PBX: +57(1) 668 3600<br/>
+            Call center: +57(1) 668 3622<br/>
+            LÃ­nea Nacional Gratuita: 018000112668<br/>
+            www.escuelaing.edu.co<br/>
+            BogotÃ¡, D.C. - Colombia<br/>
+        </span>
+
+    </footer>
+    
+</div>
+<div id="ani-subir"> <a href="#inicio" class="scroll"><img src="img/flecha-01.svg" width="50" height="50"></a> </div>
+</body>
+</html>

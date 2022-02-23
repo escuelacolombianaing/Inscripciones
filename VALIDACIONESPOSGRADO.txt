@@ -1,0 +1,260 @@
+if ( document.forms.form1.campo8.value=='M' ) {
+                    if ( (document.forms.form1.libreta.value == "") || (document.forms.form1.distrito.value == "")) {
+                        alert("La información de Libreta Militar y Distrito NO pueden estar en blanco");
+                        document.form1.libreta.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+                }
+
+
+                if ( document.forms.form1.campo11.value == '') {
+                    alert("El campo de documento no puede estar en blanco");
+                    document.form1.campo11.style.backgroundColor= '#ffcc00';
+                    return false;
+                }
+                if ( isNaN(document.forms.form1.campo11.value ) ) {
+                    alert("El documento de identidad debe ser un dato numérico");
+                    document.form1.campo11.style.backgroundColor= '#ffcc00';
+                    return false;
+                }
+
+                if ( !document.forms.form1.campo12.value == 'null' ) {
+                    alert("Debe seleccionar un tipo de Documento de identidad");
+                    document.form1.campo12.style.backgroundColor= '#ffcc00';
+                    return false;
+                }
+
+                if ( document.forms.form1.campo14.value == '' || document.forms.form1.campo15.value == '') {
+                    alert("Los campos de dirección y teléfono de residencia no deben estar en blanco");
+                    document.form1.campo14.style.backgroundColor= '#ffcc00';
+                    return false;
+                }
+
+                if ( isNaN(document.forms.form1.campo15.value ) ) {
+                    alert("El número telefónico debe ser un dato numérico");
+                    document.form1.campo15.style.backgroundColor= '#ffcc00';
+                    return false;
+                }
+
+
+                if (document.forms.form1.campo15.value.length <  7) {
+                    alert("Por favor verifique el número de teléfono e ingrese un número válido.");
+                    document.form1.campo15.style.backgroundColor= '#ffcc00';
+                    return false;
+                }
+
+                if (document.forms.form1.promedio.value == ''){
+                    alert("Debe digitar el promedio de la carrera.");
+                    document.form1.promedio.style.backgroundColor= '#ffcc00';
+                    return false;
+                }
+
+                var ind11 = document.form1.campo16.selectedIndex;
+                if ( document.forms.form1.campo16.options[ind11].value == '0') {
+                    alert("Usted debe seleccionar una ciudad de residencia");
+                    document.form1.campo16.style.backgroundColor= '#ffcc00';
+                    return false;
+                }
+			HASTA QUI OK	
+                valor = document.form1.campo20.value;
+				
+                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(valor)){
+                    return (true);
+                } else {
+                    alert("Error: Por favor ingrese una direccion de correo válida");
+                    return (false);
+                }
+
+
+ok                if ( document.forms.form1.campo22.value == '' || document.forms.form1.campo23.value == '' || document.forms.form1.campo24.value == '') {
+                    alert("Los campos de nombre, dirección y teléfono de la persona a quien se puede contactar no deben estar en blanco");
+                    document.form1.campo22.style.backgroundColor= '#ffcc00';
+                    document.form1.campo23.style.backgroundColor= '#ffcc00';
+                    return false;
+                }
+
+           ok     if ( isNaN(document.forms.form1.campo24.value ) ) {
+                    alert("Recuerde que el número telefónico debe ser un dato numérico");
+                    document.form1.campo24.style.backgroundColor= '#ffcc00';
+                    return false;
+                }
+
+                if (( document.forms.form1.campo26.options[in1].value == 'N' || document.forms.form1.pais.value == '' || document.forms.form1.campo27.value == '' || document.forms.form1.campo28.value == '' || document.forms.form1.campo29.value == '' || document.forms.form1.campo30.options[in2].value == 'N') )
+                {
+                    alert("Los campos correspondientes a la informacion de estudios de pregrado no deben estar en blanco");
+                    document.form1.campo26.style.backgroundColor= '#ffcc00';
+                    document.form1.pais.style.backgroundColor= '#ffcc00';
+                    document.form1.campo27.style.backgroundColor= '#ffcc00';
+                    document.form1.campo28.style.backgroundColor= '#ffcc00';
+                    document.form1.campo29.style.backgroundColor= '#ffcc00';
+                    document.form1.campo30.style.backgroundColor= '#ffcc00';
+                    return false;
+                }
+
+
+                if ((document.forms.form1.campo26.options[in1].value != 'N')) {
+                    if ( isNaN(document.forms.form1.campo28.value ) ) {
+                        alert("El año de inicio de estudios universitarios de pregrado debe ser dato numérico");
+                        document.form1.campo28.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+                    if (document.forms.form1.campo28.value == ''){
+                        alert("Debe digitar el año de inicio de estudios universitarios de pregrado");
+                        document.form1.campo28.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+                    if (document.forms.form1.campo28.value.length != 4) {
+                        alert("El año de inicio de estudios universitarios de pregrado no esta correcto, recuerde es de cuatro digitos");
+                        document.form1.campo28.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+                    if ( isNaN(document.forms.form1.campo29.value ) ) {
+                        alert("El año de finalización de estudios universitarios de pregrado debe ser dato numérico");
+                        document.form1.campo29.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+                    if (document.forms.form1.campo29.value == ''){
+                        alert("Debe digitar el año de finalización de estudios universitarios de pregrado");
+                        document.form1.campo29.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+                    if (document.forms.form1.campo29.value.length != 4) {
+                        alert("El año de finalización de estudios universitarios de pregrado no esta correcto, recuerde es de cuatro digitos");
+                        document.form1.campo29.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+                }
+
+                if (document.forms.form1.campo31.options[in3].value != 'N') {
+
+                    if ( isNaN(document.forms.form1.campo33.value ) ) {
+                        alert("El año de inicio de estudios universitarios de posgrado debe ser dato numérico");
+                        document.form1.campo33.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+                    if (document.forms.form1.campo33.value == ''){
+                        alert("Debe digitar el año de inicio de estudios universitarios de posgrado");
+                        document.form1.campo33.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+                    if (document.forms.form1.campo33.value.length != 4) {
+                        alert("El año de inicio de estudios universitarios de posgrado no esta correcto, recuerde es de cuatro digitos");
+                        document.form1.campo33.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+                    if ( isNaN(document.forms.form1.campo34.value ) ) {
+                        alert("El año de finalización de estudios universitarios de posgrado debe ser dato numérico");
+                        document.form1.campo34.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+                    if (document.forms.form1.campo34.value == ''){
+                        alert("Debe digitar el año de finalización de estudios universitarios de posgrado");
+                        document.form1.campo34.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+                    if (document.forms.form1.campo34.value.length != 4) {
+                        alert("El año de finalización de estudios universitarios de posgrado no esta correcto, recuerde es de cuatro digitos");
+                        document.form1.campo34.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+                    if ( document.forms.form1.campo32.value == '' || document.forms.form1.campo35.value == '') {
+                        alert("Los campos de programa y grado obtenido en los estudios universitario de posgrado no deben estar en blanco");
+                        document.form1.campo32.style.backgroundColor= '#ffcc00';
+                        document.form1.campo35.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+                }
+
+
+                if ((document.forms.form1.campo36.options[in4].value != 'N')) {
+
+                    if ( isNaN(document.forms.form1.campo38.value ) ) {
+                        alert("El año de inicio de estudios universitarios de posgrado debe ser dato numérico");
+                        document.form1.campo38.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+                    if (document.forms.form1.campo38.value == ''){
+                        alert("Debe digitar el año de inicio de estudios universitarios de posgrado");
+                        document.form1.campo38.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+                    if (document.forms.form1.campo38.value.length != 4) {
+                        alert("El año de inicio de estudios universitarios de posgrado no esta correcto, recuerde es de cuatro digitos");
+                        document.form1.campo38.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+                    if ( isNaN(document.forms.form1.campo39.value ) ) {
+                        alert("El año de finalización de estudios universitarios de posgrado debe ser dato numérico");
+                        document.form1.campo39.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+                    if (document.forms.form1.campo39.value == ''){
+                        alert("Debe digitar el año de finalización de estudios universitarios de posgrado");
+                        document.form1.campo39.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+                    if (document.forms.form1.campo39.value.length != 4) {
+                        alert("El año de finalización de estudios universitarios de posgrado no esta correcto, recuerde es de cuatro digitos");
+                        document.form1.campo39.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+                    if ( document.forms.form1.campo37.value == '' || document.forms.form1.campo40.value == '') {
+                        alert("Los campos de programa y grado obtenido en los estudios universitario de posgrado no deben estar en blanco");
+                        document.form1.campo37.style.backgroundColor= '#ffcc00';
+                        document.form1.campo40.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+                }
+
+                if ((document.forms.form1.campo41.value != '')) {
+                    if (document.forms.form1.campo42.value == ''){
+                        alert("La fecha de inicio del tipo de experiencia no debe estar en blanco");
+                        document.form1.campo42.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+                    if (document.forms.form1.campo43.value == ''){
+                        alert("La fecha de finalización del tipo de experiencia no debe estar en blanco");
+                        document.form1.campo43.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+                    if ( document.forms.form1.campo44.value == '' || document.forms.form1.campo46.value == '' || document.forms.form1.campo47.value == '') {
+                        alert("La información correspondiente a la respectiva entidad de experiencia debe estar completa.");
+                        document.form1.campo44.style.backgroundColor= '#ffcc00';
+                        document.form1.campo46.style.backgroundColor= '#ffcc00';
+                        document.form1.campo47.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+                    if ( !document.forms.form1.campo45[0].checked && !document.forms.form1.campo45[1].checked && !document.forms.form1.campo45[2].checked) {
+                        alert("Debe seleccionar el tipo de experiencia.");
+                        document.forms.form1.campo45.style.backgroundColor= '#ffcc00';
+                        return false;
+                    }
+
+                }
+
+
+                if (document.forms.form1.campo64.value==''){
+                    alert("El campo de interés académico no pueden estar en blanco.");
+                    document.form1.campo64.style.backgroundColor= '#ffcc00';
+                    return false;
+                }
+
+                if ( (document.forms.form1.campo65.value=='' || document.forms.form1.campo66.value=='' || document.forms.form1.campo67.value=='' || document.forms.form1.campo68.value=='') &&
+                    (document.forms.form1.campo69.value=='' || document.forms.form1.campo70.value=='' || document.forms.form1.campo71.value=='' || document.forms.form1.campo72.value=='') &&
+                    (document.forms.form1.campo73.value=='' || document.forms.form1.campo74.value=='' || document.forms.form1.campo75.value=='' || document.forms.form1.campo76.value=='')){
+                    alert("Usted debe proporcionar por lo menos una referencia laboral o académica.");
+                    document.form1.campo65.style.backgroundColor= '#ffcc00';
+                    return false;
+                }
+
+                if ( !document.forms.form1.campo77[0].checked && !document.forms.form1.campo77[1].checked && !document.forms.form1.campo77[2].checked && !document.forms.form1.campo77[3].checked &&
+                    !document.forms.form1.campo77[4].checked && !document.forms.form1.campo77[5].checked && !document.forms.form1.campo77[6].checked && !document.forms.form1.campo77[7].checked && !document.forms.form1.campo77[8].checked) {
+                    alert("Debe seleccionar un medio por el cual se entero del programa");
+                    return false;
+                }
+
+                if ( !document.forms.form1.campo78[0].checked && !document.forms.form1.campo78[1].checked && !document.forms.form1.campo78[2].checked &&
+                    !document.forms.form1.campo78[3].checked && !document.forms.form1.campo78[4].checked && !document.forms.form1.campo78[5].checked) {
+                    alert("Debe seleccionar una forma de financiación");
+                    return false;
+                }

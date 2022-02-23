@@ -1,0 +1,965 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="roobots" content="all"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+<title>1er. Encuentro de Gerentes de Proyectos </title>
+
+<link href="css/gerenciaproyectos.css" type="text/css" rel="stylesheet" media="all"/>
+
+<link href="fonts/stylesheet.css" type="text/css" rel="stylesheet"/>
+
+<script language="javascript" type="text/javascript" src="js/jQuery.js"></script>
+
+
+
+ <!--scroll-->
+
+         <script>
+
+            $(document).ready(function() {
+
+            $(".scroll").click(function(event){     
+
+            event.preventDefault();
+
+            $('html,body').animate({scrollTop:$(this.hash).offset().top - 100}, 1000);
+
+            });
+
+            });
+
+        </script>
+
+        
+
+        <script type="text/javascript">
+
+    $(document).ready(function(){
+
+      	$("dd").hide();
+
+	$("dt").click(function(event){
+
+             var desplegable = $(this).next();
+
+             $('dd').not(desplegable).slideUp('fast');
+
+              desplegable.slideToggle('fast');
+
+              event.preventDefault();
+
+              })
+
+        });
+
+</script>
+
+ <!--end scroll-->
+
+</head>
+
+
+
+<body>
+
+
+
+<div id="container">
+
+<a id="inicio"></a>
+
+	<div id="cont-header">
+
+	<header>
+
+    	<img src="imgSVC/logos-encuentro-escuela.svg"/>
+
+    </header>
+
+    <nav>
+
+    	<ul>
+
+        	<li><a href="#inicio" class="scroll">inicio</a></li>
+
+            <li><a href="#objetivos" class="scroll">objetivos</a></li>
+
+            <li><a href="#info" class="scroll">información general</a></li>
+
+            <li><a href="#conferencistas" class="scroll">conferencistas</a></li>
+
+            <li><a href="#agenda" class="scroll">agenda</a></li>
+
+            <li class="ultimo"><a href="#tarifas" class="scroll">tarifas</a></li>
+
+        </ul>
+
+    </nav>
+
+    </div>
+
+    <div class="img_principal">
+
+    	<br><br/><br><br/><br><br/><br><br/><br><br/>
+
+    	<img src="img/landing.jpg"/>
+
+                <div id="formulario">
+                    
+
+  	<span class="inscripcion">Inscripciones</span>
+
+			<form action="http://localhost:8080/inscripcioneslinea/Gerentes" method="post" name="form1" id="form1" onSubmit="return comprueba( );">
+
+             <input  name="idevento" type="hidden"   value="270">
+
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Nombres</td>
+                    <td>Apellidos</td>
+                    </tr>
+                  <tr>
+                    <td>
+                      <input name="nombre"  type="text" id="nombre" onBlur="MM_validateForm('nombre','','R');return document.MM_returnValue" />
+
+                    </td>
+
+                    <td>
+
+                      <input name="apellido"  type="text" id="apellido" onBlur="MM_validateForm('apellido','','R');return document.MM_returnValue" />
+
+                    </td>
+
+                    </tr>
+
+                  <tr>
+
+                    <td>Documento</td>
+
+                    <td>Celular</td>
+
+                    </tr>
+
+                  <tr>
+
+                    <td>
+
+                      <input name="documento" type="text" id="documento" onBlur="MM_validateForm('documento','','RisNum');return document.MM_returnValue" />
+
+                    </td>
+
+                    <td>
+
+                      <input name="celular" type="text" id="celular" onBlur="MM_validateForm('celular','','RisNum');return document.MM_returnValue" />
+
+                    </td>
+
+                    </tr>
+
+                  <tr>
+
+                    <td>Correo electr&oacute;nico</td>
+
+                    <td rowspan="2">
+
+                    <table>
+
+                      <tr>
+
+                        <td>
+
+                        	<input class="boton" type="submit" name="button" id="button" value="Enviar">
+
+                        </td>
+
+                        </tr>
+
+                    </table></td>
+
+                  </tr>
+
+                  <tr>
+
+                    <td>
+
+                      <input name="email" type="text" id="email" onBlur="MM_validateForm('email','','RisEmail');return document.MM_returnValue" />
+
+                    </td>
+
+                  </tr>
+
+                  </tbody>
+
+                </table>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <section>
+
+    	<div class="contacto">
+
+        	<h1>Contacto</h1>
+
+            <p>Ingeniero Daniel Salazar Ferro, PMP<br/>
+
+                Director<br/>
+
+                Unidad de Proyectos<br/>
+
+                <a href="mailto:daniel.salazar@escuelaing.edu.co">daniel.salazar@escuelaing.edu.co</a><br/>
+
+            </p>
+
+        </div>
+
+
+
+    </section>
+
+    <aside>
+
+<!--objetivos--> 
+
+    	<article class="objetivos">
+
+        <div class="espaciado"><a id="objetivos"></a></div>
+
+        <h1>Objetivos</h1>
+
+        	<div class="colum-izquierda"><h2>Objetivo principal</h2>Brindar un espacio para la difusión e intercambio de conocimiento con la comunidad nacional e internacional interesada en la gestión de riesgos en proyectos. 
+
+			</div>
+
+           
+
+               <div class="colum-derecha"><h2>Objetivos secundarios</h2>
+
+                <ul>
+
+                    <li>Facilitar la interacción de expertos y gerentes de proyectos para propiciar el avance de la profesión de la Gerencia de Proyectos y, más específicamente del tratamiento gerencial de sus riesgos.</li><br/>
+
+                    <li>Compartir casos exitosos y de avances temáticos destacables en el mundo y en Colombia, orientados a mejorar la gestión de riesgos en proyectos. </li><br/>
+
+                    <li>Fortalecer la red de Gerentes de Proyectos en Colombia.</li><br/>
+
+                    <li>Presentar casos de aplicación de gestión de riesgos en sectores clave de la economía como hidrocarburos e infraestructura.</li><br/>
+
+    			</ul>
+
+              </div>
+
+        </article>
+
+<!--dirigido a-->        
+
+        <article class="dirigido">
+
+        <div class="espaciado"><a id="info"></a></div>
+
+        <h1>información general</h1>
+
+        	<div class="colum-izquierda">
+
+            <h2>Dirigido a</h2>
+
+            <p>Profesionales de todos los sectores y regiones del país interesados en profundizar en la temática de riesgos, como área específica del conocimiento en desarrollo y gerencia de proyectos.</p><br/>
+
+            <p>
+
+            <p><h2>Beneficios</h2>
+
+            <ul>
+
+               <li>Actualización dentro de enfoques y avances de reconocimiento internacional en la gestión de riesgos, con referencia a proyectos y experiencias específicas sectoriales.</li><br/>
+
+               <li>Reconocimiento de Unidades de Desarrollo Profesional (PDU) por parte del Project Management Institute para el mantenimiento de certificaciones otorgadas por dicho Instituto.</li><br/>
+
+               <li>Certificado de asistencia expedido por la Escuela Colombiana de Ingeniería Julio Garavito</li><br/>
+
+            </ul>
+
+			</div>
+
+           
+
+            <div class="colum-derecha">
+
+            <img src="img/img-dirigidoa.jpg"/><br><br/>
+
+            <h2>Fecha y lugar</h2>
+
+            <p>El evento se realizará el 4 y 5 de junio de 2015, en el Hotel Cosmos 100 ubicado en la Calle 100 # 19ª-83.</p>
+
+            <br><br/>
+
+			</div>
+
+        </article>
+
+<!--conferencistas-->        
+
+        <article class="conferencistas">
+
+        <div class="espaciado"><a id="conferencistas"></a></div>
+
+        <h1>conferencistas internacionales</h1>
+
+        	<div class="colum-izquierda">
+
+            	<ul>
+
+                	<li>
+
+                    	<img src="img/david_hulett.jpg" width="120"/>
+
+                        <h3>David Hulett Ph.D.</h3>
+
+                        <p>Ph.D. en economía de la Universidad de Harvard es un reconocido experto mundial en temas de riesgos en proyectos.<br/>
+
+                        El Doctor Hulett ha publicado dos guías de amplio reconocimiento:<br><br/>
+
+                        <ul>
+
+                        	<li class="conferencia">Practical Schedule Risk  Analysis (Gower, 2009)</li>
+
+                            <li class="conferencia">Integrated Cost-Schedule Risk Analysis (Gower, 2011)</li>
+
+                        </ul>
+
+                    </li>
+
+                    </p>
+
+                    <li>
+
+                    	<img src="img/claudio_arfeli.jpg" width="120"/>
+
+                        <h3>Claudio Arfeli</h3>
+
+                        <p>Ingeniero civil de la Universidad de Buenos Aires (Argentina), máster in Business Administration de la Universidad Gabriela Mistral (Chile). Presidente y Fundador de MetaControl Argentina. Con más de 25 años de experiencia como ejecutivo y consultor especializado en Dirección de Proyectos y también como ingeniero de proyectos de ingeniería estructural y construcción. Ha realizado diversas presentaciones en Congresos de Project Management en Argentina, Chile, Perú y Uruguay. Profesor en Gestión de Riesgos de Proyectos en cursos de posgrado en la Facultad de Ingeniería de la Universidad Nacional de Mar del Plata, Buenos Aires (Argentina) y en la Facultad de Ingeniería de la Universidad Nacional de Cuyo, Mendoza (Argentina).</p>					
+
+                    </li>
+
+                   
+
+                    <li>
+
+                    	<img src="img/victor_villar.jpg" width="120"/>
+
+                        <h3>Víctor Villar Díaz, PMP</h3>
+
+                        <p>
+
+                        Ingeniero industrial, MBA, <strong>(faltaría las universidades donde estudió)</strong>. Gerente de General de Cosapi, empresa de ingeniería y construcción con operaciones en Perú, Chile y Colombia, con 1.500 empleados y 6.500 obreros directos.<br><br/> 
+
+
+
+Director de la Maestría en Administración y Dirección de Proyectos de la Escuela de Posgrado de la Universidad Peruana de Ciencias Aplicadas (UPC). Program manager del tour cono sur del 2007 al 2011.
+
+                        </p>
+
+                        
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+           
+
+            <div class="colum-derecha">
+
+            <ul>
+
+                	<li>
+
+                    	<img src="img/hugo_constanzo.jpg" width="120"/>
+
+                        <h3>Hugo Eduardo Constanzo Beitia</h3>
+
+                        <p>Ingeniero civil en Minas y Licenciado en Ciencias, de la Universidad de Santiago de Chile, es magíster en Gestión Empresarial y MBA de la Universidad Técnica Federico Santa María, máster en Gestión de la Universidad Politécnica de Cataluña y magíster en Innovación y Tecnología, MITE  de la Universidad Técnica Federico Santa María. Con experiencia de más de 20 años en la ejecución y control de proyectos mineros.</p><br/>
+
+                        <p>Dirigió el equipo de ingeniería geotécnica que estuvo a cargo del proyecto de rescate de los 33 mineros de la mina San José en Chile integrado por geólogos, ingenieros civiles en minas y estructuras.
+
+						</p><br/>
+
+                        <p>Formó parte del Comité Editor del Mineplanning 2013 y responsable de organizar en Santiago de Chile, el Caving Knowledge Workshop 2013, el cual reunió a profesionales de las principales empresas mineras de Caving del mundo. En la actualidad se desempeña como Superintendente de Desarrollo e Innovación de Proyectos Subterráneos de la División Andina de Codelco (Chile).
+
+						</p>
+
+                        <br><br/>
+
+                        <br><br/>
+
+                        <br><br/>
+
+                        <br><br/>
+
+                        <br><br/>
+
+                        <br><br/>
+
+                        <br><br/>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </article>
+
+<!--agenda--> 
+
+        
+
+        <article class="agenda">
+
+        <div class="espaciado"><a id="agenda"></a></div> 
+
+        <h1>agenda preliminar</h1><br><br/>
+
+            <dl>
+
+            <dt><h2>DÍA 1: jueves, 04 de junio de 2015</h2></dt>
+
+            <dd><table width="90%" cellpadding="5" cellspacing="1">
+
+
+
+  <tr>
+
+    <td width="471"> Bienvenida</td>
+
+    <td width="333">Rector </td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2"><hr /></td>
+
+  </tr>
+
+  <tr>
+
+    <td width="471">Marco General de la Gestión de Riesgos en Proyectos</td>
+
+    <td width="333">Sofía    López</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2"><hr /></td>
+
+  </tr>
+
+  <tr>
+
+    <td width="471">Normatividad asociada a la Gestión de Riesgos en Proyectos</td>
+
+    <td width="333">Luis    Eduardo Arango</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2"><hr /></td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2">Refrigerio</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2"><hr /></td>
+
+  </tr>
+
+  <tr>
+
+    <td width="471"> Innovación en la Gestión de Riesgos en Proyectos</td>
+
+    <td width="333">David    Hullet, Ph.D.</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2"><hr /></td>
+
+  </tr>
+
+  <tr>
+
+    <td width="471">El    proyecto de rescate de los 33 mineros en Chile</td>
+
+    <td width="333">Hugo    Constanzo Beitia</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2"><hr /></td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2">Almuerzo    libre</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2"><hr /></td>
+
+  </tr>
+
+  <tr>
+
+    <td width="471">Efectivo plan de respuesta a los riesgos: claves para el Éxito.</td>
+
+    <td width="333">Victor    Villar. </td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2"><hr /></td>
+
+  </tr>
+
+  <tr>
+
+    <td width="471">Ignorancia    deliberada en la gestión de los riesgos</td>
+
+    <td width="333">Claudio    Arfeli</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2"><hr /></td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2">Refrigerio</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2"><hr /></td>
+
+  </tr>
+
+  <tr>
+
+    <td width="471" rowspan="2">Panel Desafíos en la gestión de riesgos de grandes    proyectos en Colombia.</td>
+
+    <td width="333">ANI,    ISA, CCI, PNUD, BID.</td>
+
+  </tr>
+
+  <tr>
+
+    <td width="333">Natalia Salazar Ferro (moderador -    Fedesarrollo)</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2"><hr /></td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2">Coctel    de bienvenida</td>
+
+  </tr>
+
+</table></dd>
+
+ 
+
+			<dt><h2>DÍA 2: viernes, 05 de junio de 2015</h2></dt>
+
+            <dd><table width="90%" border="0" cellpadding="5" cellspacing="1">
+
+
+
+  <tr>
+
+    <td width="579">Modelos    y herramientas para la gestión de riesgos</td>
+
+    <td width="255">René Meziat</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2"><hr /></td>
+
+  </tr>
+
+  <tr>
+
+    <td width="579">Enfoque multidisciplinario para la gestión de riesgos</td>
+
+    <td width="255">Luis    Alberto Castillo</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2"><hr /></td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2" width="579">Refrigerio</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2"><hr /></td>
+
+  </tr>
+
+  <tr>
+
+    <td width="579">La gestión de riesgos en proyectos del Sector Oil &amp; Gas: Responsabilidad Social</td>
+
+    <td width="255">Edna    Rodríguez.</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2"><hr /></td>
+
+  </tr>
+
+  <tr>
+
+    <td width="579">La    gestión de riesgos en proyectos del Sector Oil &amp; Gas:    Los retos en el contexto actual</td>
+
+    <td width="255">Experto    sector petrolero Juan Múnera (Ecopetrol)</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2"><hr /></td>
+
+  </tr>
+
+  <tr>
+
+    <td width="579">La    gestión de riesgos en proyectos de la NASA</td>
+
+    <td width="255">Mario    R. Pérez</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2"><hr /></td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2" width="579">Almuerzo    libre</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2"><hr /></td>
+
+  </tr>
+
+  <tr>
+
+    <td width="579">La gestión de riesgos en proyectos del Sector    Infraestructura:  evolución    de la transferencia de riesgos en proyectos de infraestructura en Colombia.</td>
+
+    <td width="255">Luz    Helena Paternina</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2"><hr /></td>
+
+  </tr>
+
+  <tr>
+
+    <td width="579">La gestión de riesgos en proyectos del Sector Infraestructura:  dificultades para la    cobertura de riesgos en proyectos de infraestructura</td>
+
+    <td width="255">Jaime    Ernesto Cáceres</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2"><hr /></td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2" width="579">Refrigerio</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2"><hr /></td>
+
+  </tr>
+
+  <tr>
+
+    <td width="579"> La gestión de riesgos en proyectos del Sector    Infraestructura:  experiencia de gestión de riesgos en proyecto de    infraestructura.</td>
+
+    <td width="255">Juan    Carlos Saavedra</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2"><hr /></td>
+
+  </tr>
+
+  <tr>
+
+    <td width="579">El proyecto de nuestra vida: Ser Felices. Cómo no correr    Riesgos.</td>
+
+    <td width="255">Pablo    Claver</td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2"><hr /></td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="2" width="579">Invitación    a Conferencistas Internacionales</td>
+
+  </tr>
+
+</table></dd>
+
+             
+
+            </dl>
+
+        </article>
+
+    
+
+<!--tarifas-->          
+
+        <article class="tarifas">
+
+        <div class="espaciado"><a id="tarifas"></a></div>
+
+         <h1>TARIFAS Y DESCUENTOS</h1>
+
+             <div class="colum-izquierda">
+
+             <p>La inscripción al evento tiene un costo de setecientos cincuenta mil pesos ($750.000).<br><br/> 
+
+             ver descuento en la tabla.</p>
+
+         </div>
+
+         
+
+         <div class="colum-derecha">
+
+            <table border="0" cellspacing="0" cellpadding="7" width="100%">
+
+  <tr>
+
+    <td width="59%" align="center" valign="middle"><p align="center"><strong>Participante</strong></p></td>
+
+    <td width="11%" align="center" valign="middle"><p align="center"><strong>Descuento</strong></p></td>
+
+    <td width="30%" align="center" valign="middle"><p align="center"><strong>Valor<br>
+
+    con descuento </strong></p></td>
+
+  </tr>
+
+  <tr>
+
+    <td align="left" valign="middle" nowrap><p>Graduado    de la Escuela - 
+
+    afiliado a Colsubsidio</p></td>
+
+    <td align="center" valign="middle" nowrap><p align="center">10%</p></td>
+
+    <td align="center" valign="middle" nowrap><p align="center">675.000</p></td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="3" align="left" valign="middle" nowrap><hr></td>
+
+  </tr>
+
+  <tr>
+
+    <td align="left" valign="middle" nowrap><p>Graduado afiliado a Aeci</p></td>
+
+    <td align="center" valign="middle" nowrap><p align="center">12%</p></td>
+
+    <td align="center" valign="middle" nowrap><p align="center">660.000</p></td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="3" align="left" valign="middle" nowrap><hr></td>
+
+  </tr>
+
+  <tr>
+
+    <td align="left" valign="middle" nowrap><p>Estudiante    de posgrado de la Escuela</p></td>
+
+    <td align="center" valign="middle" nowrap><p align="center">20%</p></td>
+
+    <td align="center" valign="middle" nowrap><p align="center">600.000</p></td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="3" align="left" valign="middle" nowrap><hr></td>
+
+  </tr>
+
+  <tr>
+
+    <td align="left" valign="middle" nowrap><p>Estudiante    de pregrado de la Escuela</p></td>
+
+    <td align="center" valign="middle" nowrap><p align="center">30%</p></td>
+
+    <td align="center" valign="middle" nowrap><p align="center">525.000</p></td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="3" align="left" valign="middle" nowrap><hr></td>
+
+  </tr>
+
+  <tr>
+
+    <td align="left" valign="middle" nowrap><p>Profesor    de la Escuela</p></td>
+
+    <td align="center" valign="middle" nowrap><p align="center">30%</p></td>
+
+    <td align="center" valign="middle" nowrap><p align="center">525.000</p></td>
+
+  </tr>
+
+  <tr>
+
+    <td colspan="3" align="left" valign="middle" nowrap><hr></td>
+
+  </tr>
+
+  <tr>
+
+    <td align="left" valign="middle" nowrap><p>Profesor  Unidad de Proyectos
+
+    de la Escuela</p></td>
+
+    <td align="center" valign="middle" nowrap><p align="center">40%</p></td>
+
+    <td align="center" valign="middle" nowrap><p align="center">450.000</p></td>
+
+  </tr>
+
+</table>
+
+         </div>
+
+        </article>
+
+    </aside>
+
+<!--footer-->  
+
+    <footer>
+
+    	<span class="programa">
+
+            Escuela Colombiana de Ingeniería Julio Garavito<br/>
+
+            Unidad de Proyectos
+
+        </span>
+
+    	<span class="direccion">
+
+            AK.45 No.205-59 (Autopista Norte)<br/>
+
+            PBX: +57(1) 668 3600<br/>
+
+            Call center: +57(1) 668 3622<br/>
+
+            Línea Nacional Gratuita: 018000112668<br/>
+
+            www.escuelaing.edu.co<br/>
+
+            Bogotá, D.C. - Colombia<br/>
+
+        </span>
+
+    </footer>
+
+</div>
+
+</body>
+
+</html>
+

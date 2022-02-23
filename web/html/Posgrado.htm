@@ -1,0 +1,117 @@
+<html>
+    <head>
+        <title>Posgrados</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script>
+        function cambia_programa() {
+            var programas_1 = new Array("-", "DESARROLLO Y GERENCIA INTEGRAL DE PROYECTOS", "DISEÑO CONSTRUCCIÓN Y CONSERVACIÓN DE VIAS", "ECONOMÍA PARA INGENIEROS", "ESTRUCTURAS", "GERENCIA DE OPERACIONES", "GESTIÓN INTEGRADA DE LA SEGURIDAD Y SALUD EN EL TRABAJO, CALIDAD Y MEDIO AMBIENTE", "INGENIERIA DE FUNDACIONES", "RECURSOS HIDRAULICOS Y MEDIO AMBIENTE", "SANEAMIENTO AMBIENTAL");
+            var programas_2 = new Array("-", "DESARROLLO Y GERENCIA INTEGRAL DE PROYECTOS", "GESTIÓN DE INFORMACIÓN", "INGENIERÍA CIVIL", "INGENIERIA INDUSTRIAL", "INGENIERÍA ELECTRÓNICA", "INFORMÁTICA", "CIENCIAS ACTUARIALES", "CIENCIA DE DATOS");
+            var valores_1 = new Array("0", "374", "267", "313", "312", "373", "370", "320", "310", "309");
+            var valores_2 = new Array("0", "351", "353", "290", "330", "321", "371", "372", "376");
+
+            var programa = document.f1.programa[document.f1.programa.selectedIndex].value;
+
+            if (programa != 0) {
+
+                var mis_programas = eval("programas_" + programa);
+                var mis_valores = eval("valores_" + programa);
+                var num_programas = mis_programas.length;
+
+                document.f1.nomprograma.length = num_programas;
+
+                for (var i = 0; i < num_programas; i++) {
+                    document.f1.nomprograma.options[i].value = mis_valores[i];
+                    document.f1.nomprograma.options[i].text = mis_programas[i];
+
+                    /* if (programaelegido=290){
+                     var mis_enfasis = eval ("enfasis_"+ mis_valores[i]);
+                     document.f1.enfasis.options[i].value = mis_enfasis[i];
+                     document.f1.enfasis.options[i].text = mis_valores[i];
+                     }*/
+                }
+                // var programaelegido = document.f1.nomprograma[document.f1.nomprograma.selectedIndex].value;
+            } else {
+
+                document.f1.nomprograma.length = 1;
+                document.f1.nomprograma.options[0].value = "-";
+                document.f1.nomprograma.options[0].text = "-";
+            }
+            document.f1.nomprograma.options[0].selected = true;
+
+
+            // var enfasis_1 = new Array("-", "SOL", "TIERRA");
+
+        }
+
+        function cambia_enfasis() {
+            var enfasis_328 = new Array("-");
+            var idenfasis_328 = new Array("0");
+            var enfasis_267 = new Array("-");
+            var idenfasis_267 = new Array("0");
+            var enfasis_313 = new Array("-");
+            var idenfasis_313 = new Array("0");
+            var enfasis_312 = new Array("-");
+            var idenfasis_312 = new Array("0");
+            var enfasis_329 = new Array("-");
+            var idenfasis_329 = new Array("0");
+            var enfasis_282 = new Array("-");
+            var idenfasis_282 = new Array("0");
+            var enfasis_320 = new Array("-");
+            var idenfasis_320 = new Array("0");
+            var enfasis_310 = new Array("-");
+            var idenfasis_310 = new Array("0");
+            var enfasis_309 = new Array("-");
+            var idenfasis_309 = new Array("0");
+
+            var enfasis_290 = new Array("-", "INGENIERIA AMBIENTAL", "INGENIERIA ESTRUCTURAL", "GEOTECNIA");
+            var idenfasis_290 = new Array("0", "290", "291", "292", "293", "294");
+            
+            var enfasis_376 = new Array("-", "MODALIDAD PROFUNDIZACIÓN", "MODALIDAD INVESTIGACIÓN");
+            var idenfasis_376 = new Array("0", "376", "377");
+
+
+            var programaelegido = document.f1.nomprograma[document.f1.nomprograma.selectedIndex].value;
+
+            if (programaelegido != 0) {
+
+                var mis_enfasis = eval("enfasis_" + programaelegido);
+                var mis_valores = eval("idenfasis_" + programaelegido);
+                var num_enfasis = mis_enfasis.length;
+
+                document.f1.enfasis.length = num_enfasis;
+
+                for (var i = 0; i < num_enfasis; i++) {
+                    document.f1.enfasis.options[i].value = mis_valores[i];
+                    document.f1.enfasis.options[i].text = mis_enfasis[i];
+                }
+
+            } else {
+
+                document.f1.enfasis.length = 1;
+                document.f1.enfasis.options[0].value = "-";
+                document.f1.enfasis.options[0].text = "-";
+            }
+            document.f1.enfasis.options[0].selected = true;
+
+        }
+    </script>
+    </head>
+
+    <body bgcolor="#FFFFFF" text="#000000">
+        <form name="f1" method="post" action="">
+            <select name="programa" onchange="cambia_programa()">
+                <option value="0">Seleccione</option>
+                <option value="1">Especializacion</option>
+                <option value="2">Maestria</option>
+            </select>
+
+            <select name="nomprograma"  onchange="cambia_enfasis()"> 
+                <option value="-">- 
+            </select> 
+
+            <select name="enfasis"> 
+                <option value="-">- 
+            </select> 
+        </form>
+    </body>
+</html>

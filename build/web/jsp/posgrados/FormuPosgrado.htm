@@ -1,0 +1,1301 @@
+<%@ page contentType="text/html; charset=iso-8859-1" language="java" import="java.sql.*" errorPage="" %>
+<%@ page import="BDatos.BDadmisiones"%>
+<%@ page import="java.util.*,java.awt.*,java.io.*, java.text.*, java.net.*;" %>
+<%
+HttpSession sesion;
+response.setHeader("Cache-Control","no-cache");
+BDadmisiones admision = new BDadmisiones();
+Vector ciud = admision.getCiudades();
+Vector profes = admision.getProfesiones();
+int i;
+String ref = request.getParameter("ref");
+String doc = request.getParameter("doc");
+Vector pginsc = admision.getInscrito(doc, ref);
+if(pginsc.size()>0){
+    String tipo = (String)pginsc.elementAt(6);
+%>
+<html>
+<head>
+<title>Formulario de Inscripci&oacute;n</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="file:///C|/J2EE/inscripciones/web/jsp/css/comun.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function validar() {
+  var i, band;
+  for(i=0; i<45; i++){
+    document.forminsc.elements[i].style.backgroundColor= '#D8E6F1';
+  }
+  if(document.forminsc.medio.value == "0"){
+    alert("Por favor señale el medio por el cual se entero de la ECI");
+    document.forminsc.medio.style.backgroundColor= '#ffcc00';
+    document.forminsc.medio.focus();
+    return false;
+  }
+  if(document.forminsc.doc_est.value != document.forminsc.doc_est2.value){
+    alert("Los números de documento no concuerdan");
+    document.forminsc.doc_est.style.backgroundColor= '#ffcc00';
+    document.forminsc.doc_est2.style.backgroundColor= '#ffcc00';
+    document.forminsc.medio.focus();
+    return false;
+  }
+
+  band = 0;
+  for(i=0; i<43; i++){
+        if(document.forminsc.elements[i].value == "null" || document.forminsc.elements[i].value == ""){
+            if(document.forminsc.elements[i].name == "campo5" && document.forminsc.campo4.value != "0"){
+                band = 1;
+            }else if(document.forminsc.elements[i].name == "campo6" || document.forminsc.elements[i].name == "campo7" || document.forminsc.elements[i].name == "campo8" || document.forminsc.elements[i].name == "campo9"){
+                band = 1;
+            }else if(document.forminsc.elements[i].name == "campo12" && document.forminsc.campo11.value != "O"){
+                band = 1;
+            }else if(document.forminsc.elements[i].name == "campo15" && document.forminsc.campo14.value != "0"){
+                band = 1;
+            }else if(document.forminsc.elements[i].name == "campo28" && document.forminsc.campo26.value != ""){
+                band = 1;
+            }else{
+                alert("Los campos con * son obligatorios ");
+                document.forminsc.elements[i].style.backgroundColor= '#ffcc00';
+				if(i<27)
+                	document.getElementById("arriba").focus();
+				else
+					document.getElementById("campo18").focus();
+                return false;
+            }
+        }
+      }
+	 if((document.forminsc.campo51.value == "" || document.forminsc.campo54.value == "")&&(document.forminsc.campo68.value == "" || document.forminsc.campo71.value == "")){
+			alert("Ingrese la información de por lo menos uno de los padres");
+			return false;
+	 }
+         if(isNaN(document.forminsc.campo26.value )){
+			alert("El campo de Valor Mensual Pagado debe ser un número");
+                        document.forminsc.campo26.style.backgroundColor= '#ffcc00';
+                        document.getElementById("campo26").focus();
+			return false;
+	 }else{
+	 	for (i=0;i<document.forminsc.campo26.value.length;i++) { 
+			if(document.forminsc.campo26.value.charAt(i) == '.'){
+				alert("En el campo Valor Mensual Pagado no coloque puntos ni comas");
+				document.forminsc.campo26.style.backgroundColor= '#ffcc00';
+                document.getElementById("campo26").focus();
+				return false;
+			}
+		} 	
+	 }
+         if(isNaN(document.forminsc.campo18.value )){
+			alert("El Código del Colegio debe ser un número");
+                        document.forminsc.campo18.style.backgroundColor= '#ffcc00';
+                        document.getElementById("campo18").focus();
+			return false;
+	 }
+         
+         if(isNaN(document.forminsc.campo3.value )){
+			alert("Año debe ser un número");
+                        document.forminsc.campo3.style.backgroundColor= '#ffcc00';
+                        document.getElementById("campo3").focus();
+			return false;
+	 }
+         
+         if(isNaN(document.forminsc.campo20.value )){
+			alert("Año debe ser un número");
+                        document.forminsc.campo20.style.backgroundColor= '#ffcc00';
+                        document.getElementById("campo20").focus();
+			return false;
+	 }
+         
+         if(isNaN(document.forminsc.campo27.value )){
+			alert("Año debe ser un número");
+                        document.forminsc.campo27.style.backgroundColor= '#ffcc00';
+                        document.getElementById("campo27").focus();
+			return false;
+	 }
+         document.forminsc.campo65.style.backgroundColor= '#D8E6F1';
+         document.forminsc.campo82.style.backgroundColor= '#D8E6F1';
+         if(isNaN(document.forminsc.campo65.value )){
+			alert("Los ingresos deben ser un número");
+                        document.forminsc.campo65.style.backgroundColor= '#ffcc00';
+                        document.getElementById("campo65").focus();
+			return false;
+	 }else{
+	 	for (i=0;i<document.forminsc.campo65.value.length;i++) { 
+			if(document.forminsc.campo65.value.charAt(i) == '.'){
+				alert("En el campo de ingresos no coloque puntos ni comas");
+				document.forminsc.campo65.style.backgroundColor= '#ffcc00';
+                document.getElementById("campo65").focus();
+				return false;
+			}
+		} 
+	 	 //document.forminsc.campo65.value = document.forminsc.campo65.value.replace('.', '');
+	 }
+         if(isNaN(document.forminsc.campo82.value )){
+			alert("Los ingresos deben ser un número");
+                        document.forminsc.campo82.style.backgroundColor= '#ffcc00';
+                        document.getElementById("campo82").focus();
+			return false;
+	 }else{
+	 	for (i=0;i<document.forminsc.campo82.value.length;i++) { 
+			if(document.forminsc.campo82.value.charAt(i) == '.'){
+				alert("En el campo de ingresos no coloque puntos ni comas");
+				document.forminsc.campo82.style.backgroundColor= '#ffcc00';
+                document.getElementById("campo82").focus();
+				return false;
+			}
+		} 
+	 	 //document.forminsc.campo82.value = document.forminsc.campo82.value.replace('.', '');
+	 }
+}
+
+function convertTildes(str) {
+var out = "", flag = 0;
+for (i = 0; i < str.length; i++) {
+	if ((str.charAt(i)!="í") && (str.charAt(i)!="á") && (str.charAt(i)!="é") && (str.charAt(i)!="ó") && (str.charAt(i)!="ú")
+		 && (str.charAt(i)!="Á") && (str.charAt(i)!="É") && (str.charAt(i)!="Í") && (str.charAt(i)!="Ó") && (str.charAt(i)!="Ú")){
+		out += str.charAt(i);
+		flag = 0;
+    }
+	else {
+		if((flag == 0) && (str.charAt(i)=="í")){
+		  out += "i";	
+		  flag = 1;
+		}
+		if((flag == 0) && (str.charAt(i)=="á")){
+		  out += "a";	
+		  flag = 1;
+		}	
+		if((flag == 0) && (str.charAt(i)=="é")){
+		  out += "e";	
+		  flag = 1;
+		}		
+		if((flag == 0) && (str.charAt(i)=="ó")){
+		  out += "o";	
+		  flag = 1;
+		}
+		if((flag == 0) && (str.charAt(i)=="ú")){
+		  out += "u";	
+		  flag = 1;
+		}
+		if((flag == 0) && (str.charAt(i)=="Á")){
+		  out += "A";	
+		  flag = 1;
+		}
+		if((flag == 0) && (str.charAt(i)=="É")){
+		  out += "E";	
+		  flag = 1;
+		}
+		if((flag == 0) && (str.charAt(i)=="Í")){
+		  out += "I";	
+		  flag = 1;
+		}	
+		if((flag == 0) && (str.charAt(i)=="Ó")){
+		  out += "O";	
+		  flag = 1;
+		}
+		if((flag == 0) && (str.charAt(i)=="Ú")){
+		  out += "U";	
+		  flag = 1;
+		}																							 
+	}
+}
+return out;
+}
+//-->
+</script>
+</head>
+
+<body>
+<A name="arriba" id="arriba"/></a>
+<table width="640" border="0" align="center" cellpadding="0" cellspacing="0">
+  <!-- fwtable fwsrc="encabezado.png" fwbase="encabezado.gif" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="0" -->
+  <tr>
+    <td><img src="file:///C|/J2EE/inscripciones/web/jsp/img/spacer.gif" width="97" height="1" border="0" alt=""></td>
+    <td><img src="file:///C|/J2EE/inscripciones/web/jsp/img/spacer.gif" width="123" height="1" border="0" alt=""></td>
+    <td><img src="file:///C|/J2EE/inscripciones/web/jsp/img/spacer.gif" width="155" height="1" border="0" alt=""></td>
+    <td><img src="file:///C|/J2EE/inscripciones/web/jsp/img/spacer.gif" width="265" height="1" border="0" alt=""></td>
+    <td><img src="file:///C|/J2EE/inscripciones/web/jsp/img/spacer.gif" width="1" height="1" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td rowspan="2"><img name="encabezado_r1_c1" src="file:///C|/J2EE/inscripciones/web/jsp/img/encabezado_r1_c1.gif" width="97" height="70" border="0" alt=""></td>
+    <td rowspan="2"><img name="encabezado_r1_c2" src="file:///C|/J2EE/inscripciones/web/jsp/img/encabezado_r1_c2.gif" width="123" height="70" border="0" alt=""></td>
+    <td><img name="encabezado_r1_c3" src="file:///C|/J2EE/inscripciones/web/jsp/img/encabezado_r1_c3.gif" width="155" height="37" border="0" alt=""></td>
+    <td rowspan="2"><img name="encabezado_r1_c4" src="file:///C|/J2EE/inscripciones/web/jsp/img/encabezado_r1_c4.gif" width="265" height="70" border="0" alt=""></td>
+    <td><img src="file:///C|/J2EE/inscripciones/web/jsp/img/spacer.gif" width="1" height="37" border="0" alt=""></td>
+  </tr>
+  <tr>
+    <td><img name="encabezado_r2_c3" src="file:///C|/J2EE/inscripciones/web/jsp/img/encabezado_r2_c3.gif" width="155" height="33" border="0" alt=""></td>
+    <td><img src="file:///C|/J2EE/inscripciones/web/jsp/img/spacer.gif" width="1" height="33" border="0" alt=""></td>
+  </tr>
+</table>
+<br>
+<table width="680" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td> <b>Solicitud de Admisión </b><b>Programas Acad&eacute;micos de Posgrado 
+      </b> 
+      <div align="center" class="textocom"><a href="Ayuda<%=tipo%>" target="_blank"><b>&gt;&gt;Instructivo 
+        para diligenciar el Formulario&lt;&lt;</b></a></div>
+      <p><b><font color="#000099">Unicamente aparecer&aacute;n disponibles los 
+        programas de Especializaci&oacute;n que a la fecha tengan inscripciones 
+        abiertas</font>.</b></p>
+      <p>Los campos marcados con un asterisco (<b><font color=#ff0000>*</font></b>) 
+        son campos obligatorios </p>
+      <div align="center">
+<form action="file:///C|/J2EE/inscripciones/web/jsp/GrabaEstudiante" method="post" name="forminsc" id="forminsc">
+          <table width="660" border="0" cellpadding="1" cellspacing="1" class="textocom">
+            <tr> 
+              <td colspan="4"><b> <font color="#990000">*</font> Programa al cual 
+                aspira: </b><b> 
+                <select name="campo1">
+                  <option value="N" selected><b><font size="2">Seleccione</font></b></option>
+                  <%for (int j=0; j<ii; j++){
+                            StringTokenizer st = new StringTokenizer(arreglo[j], "$");
+                            k=0;%>
+                  <%while (st.hasMoreTokens()) { 
+                                texto[k]=st.nextToken();
+                                    k=k+1;                 
+                             }
+							Date fechapos = formatter.parse(texto[0]); 
+							//before: determina si la fecha hoy es anterior a fechapos, devuelve true si es cierto
+                        	if (hoy.before(fechapos)){%>
+                  <option value="<%=texto[1]%>"><b><font size="2"><%=texto[2]%></font></b></option>
+                  <%}
+                        }%>
+                  <!--<option value="253">Esp. en Desarrollo y Gerencia Integral de Proyectos</option>-->
+                </select>
+                </b></td>
+            </tr>
+            <tr> 
+              <td colspan="4"><strong>I. DATOS PERSONALES</strong> </td>
+            </tr>
+            <tr> 
+              <td width="99"><font size="2"><font size="3"><b>Apellidos:</b> </font></font></td>
+              <td width="239"><font size="2"><font size="3"> 
+                <input type="text" name="campo24" size="35" maxlength="40" onBlur="this.value = convertTildes(this.value);">
+                </font></font></td>
+              <td colspan="2"><b>Nombres:</b><font size="2"><font size="3"> 
+                <input type="text" name="campo210" size="35" maxlength="40" onBlur="this.value = convertTildes(this.value);">
+                </font></font></td>
+            </tr>
+            <%if(tipo.equals("T")){%>
+            <%}%>
+            <tr> 
+              <td width="99"><strong><font color="#990000">*</font> Fecha de Nacimiento:</strong></td>
+              <td colspan="3"><strong>Dia</strong> 
+                <select name="campo1" class="campotext" id="campo1">
+                  <option value="null" selected>dia</option>
+                  <option value="01">01</option>
+                  <option value="02">02</option>
+                  <option value="03">03</option>
+                  <option value="04">04</option>
+                  <option value="05">05</option>
+                  <option value="06">06</option>
+                  <option value="07">07</option>
+                  <option value="08">08</option>
+                  <option value="09">09</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="28">28</option>
+                  <option value="29">29</option>
+                  <option value="30">30</option>
+                  <option value="31">31</option>
+                </select>
+                &nbsp;&nbsp;<strong>&nbsp;Mes</strong> 
+                <select name="campo2" class="campotext" id="campo2">
+                  <option value="null" selected>mes</option>
+                  <option value="01">Enero</option>
+                  <option value="02">Febrero</option>
+                  <option value="03">Marzo</option>
+                  <option value="04">Abril</option>
+                  <option value="05">Mayo</option>
+                  <option value="06">Junio</option>
+                  <option value="07">Julio</option>
+                  <option value="08">Agosto</option>
+                  <option value="09">Septiembre</option>
+                  <option value="10">Octubre</option>
+                  <option value="11">Noviembre</option>
+                  <option value="12">Diciembre</option>
+                </select>
+                &nbsp;&nbsp;<strong>&nbsp;A&ntilde;o</strong> 
+                <input name="campo3" type="text" class="campotext" id="campo3" size="5" maxlength="4">
+              </td>
+            </tr>
+            <tr> 
+              <td width="99"><font color="#990000">*</font> <strong>Lugar de nacimiento:</strong></td>
+              <td colspan="3"> <font size="2">&nbsp; 
+                <select name="campo4">
+                  <option value="0" selected>SELECCIONE</option>
+                  <option value="691">ACACIAS-META</option>
+                  <option value="137">ARAUCA-ARAUCA</option>
+                  <option value="138">ARAUQUITA-ARAUCA</option>
+                  <option value="27">ARMENIA-ANTIOQUIA</option>
+                  <option value="962">ARMERO-TOLIMA</option>
+                  <option value="28">BARBOSA-ANTIOQUIA</option>
+                  <option value="852">BARRANCABERMEJA-SANTANDER</option>
+                  <option value="619">BARRANCAS-GUAJIRA</option>
+                  <option value="144">BARRANQUILLA-ATLANTICO</option>
+                  <option value="210">BELEN-BOYACA</option>
+                  <option value="1">BOGOTA-CUNDINAMARCA</option>
+                  <option value="846">BUCARAMANGA-SANTANDER</option>
+                  <option value="511">CAJICA-CUNDINAMARCA</option>
+                  <option value="1003">CALI-VALLE</option>
+                  <option value="513">CAQUEZA-CUNDINAMARCA</option>
+                  <option value="514">CARMEN DE CARUPA-CUNDINAMARCA</option>
+                  <option value="174">CARTAGENA-BOLIVAR</option>
+                  <option value="967">CHAPARRAL-TOLIMA</option>
+                  <option value="516">CHIA-CUNDINAMARCA</option>
+                  <option value="222">CHIQUINQUIRA-BOYACA</option>
+                  <option value="518">CHOACHI-CUNDINAMARCA</option>
+                  <option value="227">CIENEGA-BOYACA</option>
+                  <option value="520">COGUA-CUNDINAMARCA</option>
+                  <option value="937">COROZAL-SUCRE</option>
+                  <option value="521">COTA-CUNDINAMARCA</option>
+                  <option value="770">CUCUTA-NTE SANTANDER</option>
+                  <option value="695">CUMARAL-META</option>
+                  <option value="237">DUITAMA-BOYACA</option>
+                  <option value="181">EL GUAMO-BOLIVAR</option>
+                  <option value="169">ENGATIVA-CUNDINAMARCA</option>
+                  <option value="972">ESPINAL-TOLIMA</option>
+                  <option value="525">FACATATIVA-CUNDINAMARCA</option>
+                  <option value="354">FLORENCIA-CAQUETA</option>
+                  <option value="526">FOMEQUE-CUNDINAMARCA</option>
+                  <option value="698">FUENTE DE ORO-META</option>
+                  <option value="528">FUNZA-CUNDINAMARCA</option>
+                  <option value="530">FUSAGASUGA-CUNDINAMARCA</option>
+                  <option value="532">GACHANCIPA-CUNDINAMARCA</option>
+                  <option value="533">GACHETA-CUNDINAMARCA</option>
+                  <option value="244">GARAGOA-BOYACA</option>
+                  <option value="641">GARZON-HUILA</option>
+                  <option value="642">GIGANTE-HUILA</option>
+                  <option value="1022">GINEBRA-VALLE</option>
+                  <option value="535">GIRARDOT-CUNDINAMARCA</option>
+                  <option value="976">GUAMO-TOLIMA</option>
+                  <option value="538">GUASCA-CUNDINAMARCA</option>
+                  <option value="246">GUATEQUE-BOYACA</option>
+                  <option value="978">HONDA-TOLIMA</option>
+                  <option value="957">IBAGUE-TOLIMA</option>
+                  <option value="546">LA CALERA-CUNDINAMARCA</option>
+                  <option value="253">LA CAPILLA-BOYACA</option>
+                  <option value="336">LA DORADA-CALDAS</option>
+                  <option value="547">LA MESA-CUNDINAMARCA</option>
+                  <option value="553">MADRID-CUNDINAMARCA</option>
+                  <option value="182">MAGANGUE-BOLIVAR</option>
+                  <option value="377">MANI-CASANARE</option>
+                  <option value="262">MONIQUIRA-BOYACA</option>
+                  <option value="486">MONTELIBANO-CORDOBA</option>
+                  <option value="475">MONTERIA-CORDOBA</option>
+                  <option value="378">MONTERREY-CASANARE</option>
+                  <option value="556">MOSQUERA-CUNDINAMARCA</option>
+                  <option value="985">NATAGAIMA-TOLIMA</option>
+                  <option value="631">NEIVA-HUILA</option>
+                  <option value="558">NEMOCON-CUNDINAMARCA</option>
+                  <option value="792">OCA\A-NTE SANTANDER</option>
+                  <option value="1063">OCAÑA-NTE SANTANDER</option>
+                  <option value="00">OTRA</option>
+                  <option value="566">PARATEBUENO-CUNDINAMARCA</option>
+                  <option value="714">PASTO-NARIÑO</option>
+                  <option value="381">PAZ DE ARIPORO-CASANARE</option>
+                  <option value="830">PEREIRA-RISARALDA</option>
+                  <option value="277">PESCA-BOYACA</option>
+                  <option value="655">PITALITO-HUILA</option>
+                  <option value="391">POPAYAN-CAUCA</option>
+                  <option value="907">PUENTE NACIONAL-SANTANDER</option>
+                  <option value="279">PUERTO BOYACA-BOYACA</option>
+                  <option value="455">QUIBDO-CHOCO</option>
+                  <option value="618">RIOHACHA-GUAJIRA</option>
+                  <option value="97">SABANALARGA-ANTIOQUIA</option>
+                  <option value="994">SALDA\A-TOLIMA</option>
+                  <option value="453">SAN MARTIN-CESAR</option>
+                  <option value="669">SANTA MARTA-MAGDALENA</option>
+                  <option value="295">SANTA ROSA DE VITERBO-BOYACA</option>
+                  <option value="581">SESQUILE-CUNDINAMARCA</option>
+                  <option value="584">SIMIJACA-CUNDINAMARCA</option>
+                  <option value="933">SINCELEJO-SUCRE</option>
+                  <option value="585">SOACHA-CUNDINAMARCA</option>
+                  <option value="302">SOCHA-BOYACA</option>
+                  <option value="303">SOGAMOSO-BOYACA</option>
+                  <option value="304">SOMONDOCO-BOYACA</option>
+                  <option value="586">SOPO-CUNDINAMARCA</option>
+                  <option value="306">SOTAQUIRA-BOYACA</option>
+                  <option value="171">SUBA-CUNDINAMARCA</option>
+                  <option value="588">SUESCA-CUNDINAMARCA</option>
+                  <option value="592">TABIO-CUNDINAMARCA</option>
+                  <option value="388">TAURAMENA-CASANARE</option>
+                  <option value="595">TENJO-CUNDINAMARCA</option>
+                  <option value="312">TENZA-BOYACA</option>
+                  <option value="314">TIBASOSA-BOYACA</option>
+                  <option value="665">TIMANA-HUILA</option>
+                  <option value="599">TOCANCIPA-CUNDINAMARCA</option>
+                  <option value="1038">TULUA-VALLE</option>
+                  <option value="206">TUNJA-BOYACA</option>
+                  <option value="603">UBATE-CUNDINAMARCA</option>
+                  <option value="127">VALDIVIA-ANTIOQUIA</option>
+                  <option value="431">VALLEDUPAR-CESAR</option>
+                  <option value="256">VILLA DE LEIVA-BOYACA</option>
+                  <option value="204">VILLANUEVA-BOLIVAR</option>
+                  <option value="610">VILLAPINZON-CUNDINAMARCA</option>
+                  <option value="690">VILLAVICENCIO-META</option>
+                  <option value="611">VILLETA-CUNDINAMARCA</option>
+                  <option value="372">YOPAL-CASANARE</option>
+                  <option value="328">ZETAQUIRA-BOYACA</option>
+                  <option value="615">ZIPAQUIRA-CUNDINAMARCA</option>
+                </select>
+                </font> </td>
+            </tr>
+            <tr> 
+              <td colspan="4"><strong><font color="#990000">*</font> Sexo: <font size="2"> 
+                <select name="campo10" class="campotext" id="campo10">
+                  <option value="M" selected>Masculino 
+                  <option value="F">Femenino 
+                </select>
+                </font><font color="#990000">*</font> Estado Civil: <font size="2"> 
+                <select name="campo11" class="campotext" id="campo11">
+                  <option value="S" selected>Soltero 
+                  <option value="C">Casado 
+                  <option value="O">Otro 
+                </select>
+                </font></strong></td>
+            </tr>
+            <tr> 
+              <td colspan="4"><strong>Documento de identidad No: <font color="#00714D" size="3"><font color="#000000"> 
+                <input type="text" name="campo113" size="15" maxlength="15">
+                </font></font><font color="#00714D" size="3"><font color="#000000"> 
+                </font></font></strong></td>
+            </tr>
+            <tr> 
+              <td colspan="4"><strong> Tipo de documento</strong>:<font size="2"><b> 
+                <select name="select2" class="campotext">
+                  <option value="null" selected>Seleccione</option>
+                  <option value="T">TI 
+                  <option value="C">CC 
+                  <option value="E">CE 
+                  <option value="R">RC 
+                </select>
+                </b></font></td>
+            </tr>
+            <tr> 
+              <td colspan="4"><b>Libreta militar No.</b> 
+                <input name="campo7" type="text" class="campotext" id="campo7" size="10" maxlength="15">
+                <b> Distrito No.</b><strong> </strong> 
+                <input name="campo8" type="text" class="campotext" id="campo8" size="3" maxlength="3">
+              </td>
+            </tr>
+            <tr> 
+              <td colspan="4"><strong><font color="#990000">*</font> Direcci&oacute;n 
+                de residencia: 
+                <input name="campo13" type="text" class="campotext" id="campo13" size="50" maxlength="35">
+                </strong></td>
+            </tr>
+            <tr> 
+              <td width="99"><strong><font color="#990000">*</font> Tel&eacute;fono: 
+                </strong></td>
+              <td width="239"> 
+                <input name="campo16" type="text" class="campotext" id="campo16" maxlength="15">
+              </td>
+              <td colspan="2"><strong><font color="#990000">*</font> Ciudad:</strong> 
+                <select name="campo14" class="campotext" id="campo14">
+                  <option value="null" selected>Seleccione</option>
+                  <%
+           for(i=0;i<ciud.size();i++){
+                detciud = (Vector)ciud.elementAt(i);
+%>
+                  <option value="<%=detciud.elementAt(0)%>"><%=detciud.elementAt(1)%></option>
+                  <%
+          }
+          %>
+                  <option value="0">Otra</option>
+                </select>
+              </td>
+            </tr>
+            <tr> 
+              <td colspan="4"><strong> Direcci&oacute;n de Oficina: 
+                <input name="campo132" type="text" class="campotext" id="campo13" size="50" maxlength="35">
+                </strong></td>
+            </tr>
+            <tr> 
+              <td width="99"><strong> Tel&eacute;fono: </strong></td>
+              <td width="239"> 
+                <input name="campo162" type="text" class="campotext" id="campo16" maxlength="15">
+              </td>
+              <td colspan="2"><strong><font color="#990000">*</font> Ciudad:</strong> 
+                <select name="select3" class="campotext" id="campo14">
+                  <option value="null" selected>Seleccione</option>
+                  <%
+           for(i=0;i<ciud.size();i++){
+                detciud = (Vector)ciud.elementAt(i);
+%>
+                  <option value="<%=detciud.elementAt(0)%>"><%=detciud.elementAt(1)%></option>
+                  <%
+          }
+          %>
+                  <option value="0">Otra</option>
+                </select>
+              </td>
+            </tr>
+            <tr> 
+              <td colspan="2"><strong>Correo electr&oacute;nico</strong>: <font size="3"><font color="#000000"> 
+                <input type="text" name="campo202" size="20" maxlength="30">
+                </font></font></td>
+              <td colspan="2"><b> Celular</b>:<font size="3"><font color="#00714D"><font color="#000000"> 
+                <input type="text" name="campo212" size="10" maxlength="15">
+                </font></font></font></td>
+            </tr>
+            <tr> 
+              <td colspan="4"><b>Persona a quien se puede contactar en caso <br>
+                de emergencia:&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000" size="3"> 
+                <input type="text" name="campo222" size="50" maxlength="50"  onBlur="this.value = convertTildes(this.value);">
+                </font></b></td>
+            </tr>
+            <tr> 
+              <td colspan="2"><strong>Direcci&oacute;n </strong><font color="#000000" size="3"> 
+                : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                <input type="text" name="campo23" size="30" maxlength="30">
+                </font></td>
+              <td colspan="2"></td>
+            </tr>
+            <tr> 
+              <td width="99"><strong>Tel&eacute;fono: </strong></td>
+              <td width="239"> 
+                <input name="campo1622" type="text" class="campotext" id="campo16" maxlength="15">
+              </td>
+              <td colspan="2"><strong>Ciudad:</strong><font size="3"> 
+                <select name="campo25">
+                  <option value="0" selected><font color="#00714D" size="3">SELECCIONE</font></option>
+                  <option value="691"><font color="#00714D" size="3">ACACIAS-META</font></option>
+                  <option value="137"><font color="#00714D" size="3">ARAUCA-ARAUCA</font></option>
+                  <option value="138"><font color="#00714D" size="3">ARAUQUITA-ARAUCA</font></option>
+                  <option value="27"><font color="#00714D" size="3">ARMENIA-ANTIOQUIA</font></option>
+                  <option value="962"><font color="#00714D" size="3">ARMERO-TOLIMA</font></option>
+                  <option value="28"><font color="#00714D" size="3">BARBOSA-ANTIOQUIA</font></option>
+                  <option value="852"><font color="#00714D" size="3">BARRANCABERMEJA-SANTANDER</font></option>
+                  <option value="619"><font color="#00714D" size="3">BARRANCAS-GUAJIRA</font></option>
+                  <option value="144"><font color="#00714D" size="3">BARRANQUILLA-ATLANTICO</font></option>
+                  <option value="210"><font color="#00714D" size="3">BELEN-BOYACA</font></option>
+                  <option value="1"><font color="#00714D" size="3">BOGOTA-CUNDINAMARCA</font></option>
+                  <option value="846"><font color="#00714D" size="3">BUCARAMANGA-SANTANDER</font></option>
+                  <option value="511"><font color="#00714D" size="3">CAJICA-CUNDINAMARCA</font></option>
+                  <option value="1003"><font color="#00714D" size="3">CALI-VALLE</font></option>
+                  <option value="513"><font color="#00714D" size="3">CAQUEZA-CUNDINAMARCA</font></option>
+                  <option value="514"><font color="#00714D" size="3">CARMEN DE 
+                  CARUPA-CUNDINAMARCA</font></option>
+                  <option value="174"><font color="#00714D" size="3">CARTAGENA-BOLIVAR</font></option>
+                  <option value="967"><font color="#00714D" size="3">CHAPARRAL-TOLIMA</font></option>
+                  <option value="516"><font color="#00714D" size="3">CHIA-CUNDINAMARCA</font></option>
+                  <option value="222"><font color="#00714D" size="3">CHIQUINQUIRA-BOYACA</font></option>
+                  <option value="518"><font color="#00714D" size="3">CHOACHI-CUNDINAMARCA</font></option>
+                  <option value="227"><font color="#00714D" size="3">CIENEGA-BOYACA</font></option>
+                  <option value="520"><font color="#00714D" size="3">COGUA-CUNDINAMARCA</font></option>
+                  <option value="937"><font color="#00714D" size="3">COROZAL-SUCRE</font></option>
+                  <option value="521"><font color="#00714D" size="3">COTA-CUNDINAMARCA</font></option>
+                  <option value="770"><font color="#00714D" size="3">CUCUTA-NTE 
+                  SANTANDER</font></option>
+                  <option value="695"><font color="#00714D" size="3">CUMARAL-META</font></option>
+                  <option value="237"><font color="#00714D" size="3">DUITAMA-BOYACA</font></option>
+                  <option value="181"><font color="#00714D" size="3">EL GUAMO-BOLIVAR</font></option>
+                  <option value="169"><font color="#00714D" size="3">ENGATIVA-CUNDINAMARCA</font></option>
+                  <option value="972"><font color="#00714D" size="3">ESPINAL-TOLIMA</font></option>
+                  <option value="525"><font color="#00714D" size="3">FACATATIVA-CUNDINAMARCA</font></option>
+                  <option value="354"><font color="#00714D" size="3">FLORENCIA-CAQUETA</font></option>
+                  <option value="526"><font color="#00714D" size="3">FOMEQUE-CUNDINAMARCA</font></option>
+                  <option value="698"><font color="#00714D" size="3">FUENTE DE 
+                  ORO-META</font></option>
+                  <option value="528"><font color="#00714D" size="3">FUNZA-CUNDINAMARCA</font></option>
+                  <option value="530"><font color="#00714D" size="3">FUSAGASUGA-CUNDINAMARCA</font></option>
+                  <option value="532"><font color="#00714D" size="3">GACHANCIPA-CUNDINAMARCA</font></option>
+                  <option value="533"><font color="#00714D" size="3">GACHETA-CUNDINAMARCA</font></option>
+                  <option value="244"><font color="#00714D" size="3">GARAGOA-BOYACA</font></option>
+                  <option value="641"><font color="#00714D" size="3">GARZON-HUILA</font></option>
+                  <option value="642"><font color="#00714D" size="3">GIGANTE-HUILA</font></option>
+                  <option value="1022"><font color="#00714D" size="3">GINEBRA-VALLE</font></option>
+                  <option value="535"><font color="#00714D" size="3">GIRARDOT-CUNDINAMARCA</font></option>
+                  <option value="976"><font color="#00714D" size="3">GUAMO-TOLIMA</font></option>
+                  <option value="538"><font color="#00714D" size="3">GUASCA-CUNDINAMARCA</font></option>
+                  <option value="246"><font color="#00714D" size="3">GUATEQUE-BOYACA</font></option>
+                  <option value="978"><font color="#00714D" size="3">HONDA-TOLIMA</font></option>
+                  <option value="957"><font color="#00714D" size="3">IBAGUE-TOLIMA</font></option>
+                  <option value="546"><font color="#00714D" size="3">LA CALERA-CUNDINAMARCA</font></option>
+                  <option value="253"><font color="#00714D" size="3">LA CAPILLA-BOYACA</font></option>
+                  <option value="336"><font color="#00714D" size="3">LA DORADA-CALDAS</font></option>
+                  <option value="547"><font color="#00714D" size="3">LA MESA-CUNDINAMARCA</font></option>
+                  <option value="553"><font color="#00714D" size="3">MADRID-CUNDINAMARCA</font></option>
+                  <option value="182"><font color="#00714D" size="3">MAGANGUE-BOLIVAR</font></option>
+                  <option value="377"><font color="#00714D" size="3">MANI-CASANARE</font></option>
+                  <option value="262"><font color="#00714D" size="3">MONIQUIRA-BOYACA</font></option>
+                  <option value="486"><font color="#00714D" size="3">MONTELIBANO-CORDOBA</font></option>
+                  <option value="475"><font color="#00714D" size="3">MONTERIA-CORDOBA</font></option>
+                  <option value="378"><font color="#00714D" size="3">MONTERREY-CASANARE</font></option>
+                  <option value="556"><font color="#00714D" size="3">MOSQUERA-CUNDINAMARCA</font></option>
+                  <option value="985"><font color="#00714D" size="3">NATAGAIMA-TOLIMA</font></option>
+                  <option value="631"><font color="#00714D" size="3">NEIVA-HUILA</font></option>
+                  <option value="558"><font color="#00714D" size="3">NEMOCON-CUNDINAMARCA</font></option>
+                  <option value="792"><font color="#00714D" size="3">OCA\A-NTE 
+                  SANTANDER</font></option>
+                  <option value="1063"><font color="#00714D" size="3">OCAÑA-NTE 
+                  SANTANDER</font></option>
+                  <option value="566"><font color="#00714D" size="3">PARATEBUENO-CUNDINAMARCA</font></option>
+                  <option value="714"><font color="#00714D" size="3">PASTO-NARIÑO</font></option>
+                  <option value="381"><font color="#00714D" size="3">PAZ DE ARIPORO-CASANARE</font></option>
+                  <option value="830"><font color="#00714D" size="3">PEREIRA-RISARALDA</font></option>
+                  <option value="277"><font color="#00714D" size="3">PESCA-BOYACA</font></option>
+                  <option value="655"><font color="#00714D" size="3">PITALITO-HUILA</font></option>
+                  <option value="391"><font color="#00714D" size="3">POPAYAN-CAUCA</font></option>
+                  <option value="907"><font color="#00714D" size="3">PUENTE NACIONAL-SANTANDER</font></option>
+                  <option value="279"><font color="#00714D" size="3">PUERTO BOYACA-BOYACA</font></option>
+                  <option value="455"><font color="#00714D" size="3">QUIBDO-CHOCO</font></option>
+                  <option value="618"><font color="#00714D" size="3">RIOHACHA-GUAJIRA</font></option>
+                  <option value="97"><font color="#00714D" size="3">SABANALARGA-ANTIOQUIA</font></option>
+                  <option value="994"><font color="#00714D" size="3">SALDA\A-TOLIMA</font></option>
+                  <option value="453"><font color="#00714D" size="3">SAN MARTIN-CESAR</font></option>
+                  <option value="669"><font color="#00714D" size="3">SANTA MARTA-MAGDALENA</font></option>
+                  <option value="295"><font color="#00714D" size="3">SANTA ROSA 
+                  DE VITERBO-BOYACA</font></option>
+                  <option value="581"><font color="#00714D" size="3">SESQUILE-CUNDINAMARCA</font></option>
+                  <option value="584"><font color="#00714D" size="3">SIMIJACA-CUNDINAMARCA</font></option>
+                  <option value="933"><font color="#00714D" size="3">SINCELEJO-SUCRE</font></option>
+                  <option value="585"><font color="#00714D" size="3">SOACHA-CUNDINAMARCA</font></option>
+                  <option value="302"><font color="#00714D" size="3">SOCHA-BOYACA</font></option>
+                  <option value="303"><font color="#00714D" size="3">SOGAMOSO-BOYACA</font></option>
+                  <option value="304"><font color="#00714D" size="3">SOMONDOCO-BOYACA</font></option>
+                  <option value="586"><font color="#00714D" size="3">SOPO-CUNDINAMARCA</font></option>
+                  <option value="306"><font color="#00714D" size="3">SOTAQUIRA-BOYACA</font></option>
+                  <option value="171"><font color="#00714D" size="3">SUBA-CUNDINAMARCA</font></option>
+                  <option value="588"><font color="#00714D" size="3">SUESCA-CUNDINAMARCA</font></option>
+                  <option value="592"><font color="#00714D" size="3">TABIO-CUNDINAMARCA</font></option>
+                  <option value="388"><font color="#00714D" size="3">TAURAMENA-CASANARE</font></option>
+                  <option value="595"><font color="#00714D" size="3">TENJO-CUNDINAMARCA</font></option>
+                  <option value="312"><font color="#00714D" size="3">TENZA-BOYACA</font></option>
+                  <option value="314"><font color="#00714D" size="3">TIBASOSA-BOYACA</font></option>
+                  <option value="665"><font color="#00714D" size="3">TIMANA-HUILA</font></option>
+                  <option value="599"><font color="#00714D" size="3">TOCANCIPA-CUNDINAMARCA</font></option>
+                  <option value="1038"><font color="#00714D" size="3">TULUA-VALLE</font></option>
+                  <option value="206"><font color="#00714D" size="3">TUNJA-BOYACA</font></option>
+                  <option value="603"><font color="#00714D" size="3">UBATE-CUNDINAMARCA</font></option>
+                  <option value="127"><font color="#00714D" size="3">VALDIVIA-ANTIOQUIA</font></option>
+                  <option value="431"><font color="#00714D" size="3">VALLEDUPAR-CESAR</font></option>
+                  <option value="256"><font color="#00714D" size="3">VILLA DE 
+                  LEIVA-BOYACA</font></option>
+                  <option value="204"><font color="#00714D" size="3">VILLANUEVA-BOLIVAR</font></option>
+                  <option value="610"><font color="#00714D" size="3">VILLAPINZON-CUNDINAMARCA</font></option>
+                  <option value="690"><font color="#00714D" size="3">VILLAVICENCIO-META</font></option>
+                  <option value="611"><font color="#00714D" size="3">VILLETA-CUNDINAMARCA</font></option>
+                  <option value="372"><font color="#00714D" size="3">YOPAL-CASANARE</font></option>
+                  <option value="328"><font color="#00714D" size="3">ZETAQUIRA-BOYACA</font></option>
+                  <option value="615"><font color="#00714D" size="3">ZIPAQUIRA-CUNDINAMARCA</font></option>
+                </select>
+                </font></td>
+            </tr>
+            <tr> 
+              <td colspan="4"> 
+                <hr size="2" width="640">
+              </td>
+            </tr>
+            <tr> 
+              <td colspan="4"><strong>II. EDUCACI&Oacute;N</strong></td>
+            </tr>
+            <tr> 
+              <td colspan="4"> </td>
+            </tr>
+            <tr> 
+              <td colspan="2"><b>Estudios Universitarios de pregrado(T&iacute;tulo 
+                Profesional)</b></td>
+              <td colspan="2"><b>Promedio de la carrera: </b><font size="2"><font color="#00714D" size="3"><b><b><b><font color="#000000"> 
+                <input type="text" name="promedio" size="2" maxlength="2">
+                </font></b></b></b></font></font><b>(Dos d&iacute;gitos sin puntos)</b></td>
+            </tr>
+            <tr> 
+              <td colspan="4" > 
+                <table width="620" border="1" align="center" class="textocom">
+                  <tr> 
+                    <td rowspan="2" width="269"><b>Universidad</b></td>
+                    <td rowspan="2" width="87"><b>Pais</b></td>
+                    <td rowspan="2" width="110"><b>Programa</b></td>
+                    <td colspan="2"><b>Fechas</b></td>
+                    <td rowspan="2" width="196"><b>Grado Obtenido</b></td>
+                  </tr>
+                  <tr> 
+                    <td width="85"><b>Desde(aaaa)</b></td>
+                    <td width="82"><b>Hasta(aaaa)</b></td>
+                  </tr>
+                  <tr> 
+                    <td width="269"><font size="2"> 
+                      <select name="select">
+                        <option value="N" selected><font size="2">SELECCIONE</font></option>
+                        <option value="CORPORACION UNIVERSITARIA DE IBAGUE"><font size="2">CORP 
+                        UNIV DE IBAGUE</font></option>
+                        <option value="CORPORACION UNIVERSITARIA DE LA COSTA"><font size="2">CORP 
+                        UNIV DE LA COSTA</font></option>
+                        <option value="ESCUELA COLOMBIANA DE INGENIERIA JULIO GARAVITO"><font size="2">ESC 
+                        COL DE INGENIERIA JULIO GARAVITO</font></option>
+                        <option value="ESCUELA DE ADMINISTRACION DE NEGOCIOS"><font size="2">ESC 
+                        DE ADM DE NEGOCIOS</font></option>
+                        <option value="ESCUELA NAVAL DE CADETES "ALMIRANTE JOSE PRUDENCIO PADILLA""><font size="2">ESC 
+                        NAVAL DE CADETES</font></option>
+                        <option value="FUNDACION UNIVERSIDAD DE AMERICA"><font size="2">FUND 
+                        UNIV DE AMERICA</font></option>
+                        <option value="FUNDACION UNIVERSITARIA AGRARIA DE COLOMBIA"><font size="2">FUND 
+                        UNIV AGRARIA DE COLOMBIA</font></option>
+                        <option value="FUNDACION UNIVERSITARIA AUTONOMA DE COLOMBIA"><font size="2">FUND 
+                        UNIV AUTONOMA DE COLOMBIA</font></option>
+                        <option value="FUNDACION UNIVERSITARIA DE BOYACA"><font size="2">FUND 
+                        UNIV DE BOYACA</font></option>
+                        <option value="INSTITUTO UNIVERSITARIO DE LA PAZ"><font size="2">INSTITUTO 
+                        UNIVERSITARIO DE LA PAZ</font></option>
+                        <option value="PONTIFICIA UNIVERSIDAD JAVERIANA"><font size="2">PONTIFICIA 
+                        UNIV JAVERIANA</font></option>
+                        <option value="UNIVERSIDAD ANTONIO NARIÑO"><font size="2">UNIV 
+                        ANTONIO NARIÑO</font></option>
+                        <option value="UNIVERSIDAD AUTONOMA DE COLOMBIA"><font size="2">UNIV 
+                        AUTONOMA DE COLOMBIA</font></option>
+                        <option value="UNIVERSIDAD AUTONOMA DE MANIZALES"><font size="2">UNIV 
+                        AUTONOMA DE MANIZALES</font></option>
+                        <option value="UNIVERSIDAD AUTONOMA DEL CARIBE"><font size="2">UNIV 
+                        AUTONOMA DEL CARIBE</font></option>
+                        <option value="UNIVERSIDAD CATOLICA DE COLOMBIA"><font size="2">UNIV 
+                        CATOLICA DE COLOMBIA</font></option>
+                        <option value="UNIVERSIDAD COOPERATIVA DE COLOMBIA"><font size="2">UNIV 
+                        COOPERATIVA DE COLOMBIA</font></option>
+                        <option value="UNIVERSIDAD DE AMERICA"><font size="2">UNIV 
+                        DE AMERICA</font></option>
+                        <option value="UNIVERSIDAD DE CARTAGENA"><font size="2">UNIV 
+                        DE CARTAGENA</font></option>
+                        <option value="UNIVERSIDAD DE CIENCIAS APLICADAS Y AMBIENTALES"><font size="2">UNIV 
+                        DE CIENCIAS APLICADAS Y AMBIENTALES</font></option>
+                        <option value="UNIVERSIDAD DE LA SABANA"><font size="2">UNIV 
+                        DE LA SABANA</font></option>
+                        <option value="UNIVERSIDAD DE LA SALLE"><font size="2">UNIV 
+                        DE LA SALLE</font></option>
+                        <option value="UNIVERSIDAD DE LOS ANDES"><font size="2">UNIV 
+                        DE LOS ANDES</font></option>
+                        <option value="UNIVERSIDAD DE NARIÑO"><font size="2">UNIV 
+                        DE NARIÑO</font></option>
+                        <option value="UNIVERSIDAD DEL CAUCA"><font size="2">UNIV 
+                        DEL CAUCA</font></option>
+                        <option value="UNIVERSIDAD DEL QUINDIO"><font size="2">UNIV 
+                        DEL QUINDIO</font></option>
+                        <option value="UNIVERSIDAD DISTRITAL FRANCISCO JOSE DE CALDAS"><font size="2">UNIV 
+                        DIST FRANCISCO JOSE DE CALDAS</font></option>
+                        <option value="UNIVERSIDAD FRANCISCO DE PAULA SANTANDER"><font size="2">UNIV 
+                        FRANCISCO DE PAULA SANTANDER</font></option>
+                        <option value="UNIVERSIDAD INDUSTRIAL DE SANTANDER"><font size="2">UNIV 
+                        INDUSTRIAL DE SANTANDER</font></option>
+                        <option value="UNIVERSIDAD JORGE TADEO LOZANO"><font size="2">UNIV 
+                        JORGE TADEO LOZANO</font></option>
+                        <option value="UNIVERSIDAD LA GRAN COLOMBIA"><font size="2">UNIV 
+                        LA GRAN COLOMBIA</font></option>
+                        <option value="UNIVERSIDAD LIBRE"><font size="2">UNIV 
+                        LIBRE</font></option>
+                        <option value="UNIVERSIDAD MILITAR NUEVA GRANADA"><font size="2">UNIV 
+                        MILITAR NUEVA GRANADA</font></option>
+                        <option value="UNIVERSIDAD NACIONAL DE COLOMBIA"><font size="2">UNIV 
+                        NACIONAL DE COLOMBIA</font></option>
+                        <option value="UNIVERSIDAD PEDAGOGICA Y TECNOLOGICA DE COLOMBIA"><font size="2">UNIV 
+                        PEDAGOGICA Y TECNOLOGICA DE COLOMBIA</font></option>
+                        <option value="UNIVERSIDAD PILOTO DE COLOMBIA"><font size="2">UNIV 
+                        PILOTO DE COLOMBIA</font></option>
+                        <option value="UNIVERSIDAD SANTIAGO DE CALI"><font size="2">UNIV 
+                        SANTIAGO DE CALI</font></option>
+                        <option value="UNIVERSIDAD SANTO TOMAS"><font size="2">UNIV 
+                        SANTO TOMAS</font></option>
+                        <option value="UNIVERSIDAD SERGIO ARBOLEDA"><font size="2">UNIV 
+                        SERGIO ARBOLEDA</font></option>
+                        <option value="UNIVERSIDAD SURCOLOMBIANA"><font size="2">UNIV 
+                        SURCOLOMBIANA</font></option>
+                        <option value="OTRA"><font size="2">OTRA</font></option>
+                      </select>
+                      </font></td>
+                    <td width="87"><font color="#00714D" size="3"><b><b><b><font color="#000000"> 
+                      <input type="text" name="pais2" size="10" maxlength="30">
+                      </font></b></b></b></font></td>
+                    <td width="110"><font color="#00714D" size="3"><b><b><b><font color="#000000"> 
+                      <input type="text" name="campo2722" size="20" maxlength="50">
+                      </font></b></b></b></font></td>
+                    <td width="85"><font color="#00714D" size="3"><b><b><b><font color="#000000"> 
+                      <input type="text" name="campo2822" size="4" maxlength="4">
+                      </font></b></b></b></font></td>
+                    <td width="82"><font color="#00714D" size="3"><b><b><b><font color="#000000"> 
+                      <input type="text" name="campo2922" size="4" maxlength="4">
+                      </font></b></b></b></font></td>
+                    <td width="196"><font size="2"> 
+                      <select name="select16">
+                        <option value="N" selected><font size="2">SELECCIONE</font></option>
+                        <option value="Administrador Financiero y de Sistemas"><font size="2">Admon 
+                        de Instituciones de servicio</font></option>
+                        <option value="Administrador de Empresas"><font size="2">Admon 
+                        de Empresas</font></option>
+                        <option value="Administrador Financiero y de Sistemas"><font size="2">Admon 
+                        Financiero y de Sistemas</font></option>
+                        <option value="Arquitecto"><font size="2">Arquitecto</font></option>
+                        <option value="Biólogo"><font size="2">Biólogo</font></option>
+                        <option value="Biólogo marino"><font size="2">Biólogo 
+                        marino</font></option>
+                        <option value="Economista"><font size="2">Economista</font></option>
+                        <option value="Ingeniero Agrícola"><font size="2">Ingeniero 
+                        Agrícola</font></option>
+                        <option value="Ingeniero Ambiental"><font size="2">Ingeniero 
+                        Ambiental</font></option>
+                        <option value="Ingeniero Ambiental y de Saneamiento"><font size="2">Ing 
+                        Ambiental y de Saneamiento</font></option>
+                        <option value="Ingeniero Ambiental y Sanitario"><font size="2">Ing 
+                        Ambiental y Sanitario</font></option>
+                        <option value="Ingeniero Catastral y Geodesta"><font size="2">Ing 
+                        Catastral y Geodesta</font></option>
+                        <option value="Ingeniero Civil"><font size="2">Ingeniero 
+                        Civil</font></option>
+                        <option value="Ingeniero de Petróleos"><font size="2">Ingeniero 
+                        de Petróleos</font></option>
+                        <option value="Ingeniero de Producción Agroindustrial"><font size="2">Ing 
+                        de Produc Agroindustrial</font></option>
+                        <option value="Ingeniero de Sistemas"><font size="2">Ingeniero 
+                        de Sistemas</font></option>
+                        <option value="Ingeniero Electricista"><font size="2">Ingeniero 
+                        Electricista</font></option>
+                        <option value="Ingeniero Electrónico"><font size="2">Ingeniero 
+                        Electrónico</font></option>
+                        <option value="Ingeniero Forestal"><font size="2">Ingeniero 
+                        Forestal</font></option>
+                        <option value="Ingeniero Geólogo"><font size="2">Ingeniero 
+                        Geólogo</font></option>
+                        <option value="Ingeniero Industrial"><font size="2">Ingeniero 
+                        Industrial</font></option>
+                        <option value="Ingeniero Mecánico"><font size="2">Ingeniero 
+                        Mecánico</font></option>
+                        <option value="Ingeniero Naval"><font size="2">Ingeniero 
+                        Naval</font></option>
+                        <option value="Ingeniero Químico"><font size="2">Ingeniero 
+                        Químico</font></option>
+                        <option value="Ingeniero Sanitario y Ambiental"><font size="2">Ing 
+                        Sanitario y Ambiental</font></option>
+                        <option value="Microbiólogo Industrial"><font size="2">Microbiólogo 
+                        Industrial</font></option>
+                        <option value="Psicologo"><font size="2">Psicologo</font></option>
+                        <option value="Químico Industrial"><font size="2">Químico 
+                        Industrial</font></option>
+                        <option value="Otra"><font size="2">Otra</font></option>
+                      </select>
+                      </font></td>
+                  </tr>
+                </table>
+                <div align="center"></div>
+                <p><font size="2"><b><font size="3">Otros estudios formales (Aquellos 
+                  que conducen a t&iacute;tulo)</font></b></font></p>
+                <table width="660" border="0" height="147">
+                  <tr> 
+                    <td rowspan="2" width="180"> 
+                      <div align="center"><b>Universidad</b></div>
+                    </td>
+                    <td rowspan="2" width="180"> 
+                      <div align="center"><b>Programa</b></div>
+                    </td>
+                    <td colspan="2"> 
+                      <div align="center"><b>Fechas </b> </div>
+                      <div align="center"></div>
+                    </td>
+                    <td rowspan="2" width="180"> 
+                      <div align="center"><font color="#00714D" size="3"><b><font color="#000000">&nbsp;&nbsp;Grado 
+                        Obtenido<br>
+                        <font size="2">(Digite el nombre completo)</font></font></b></font></div>
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td width="60"> 
+                      <div align="center"><b>Desde</b></div>
+                    </td>
+                    <td width="60"> 
+                      <div align="center"><b>Hasta</b></div>
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td width="35%"> 
+                      <div align="center"><font color="#00714D" size="3"><b><b><b><font color="#000000"> 
+                        <input type="text" name="campo31" size="20" maxlength="30">
+                        </font></b></b></b></font></div>
+                    </td>
+                    <td width="25%"> 
+                      <div align="center"><font color="#00714D" size="3"><b><b><b><font color="#000000"> 
+                        <input type="text" name="campo32" size="20" maxlength="50"  onBlur="this.value = convertTildes(this.value);">
+                        </font></b></b></b></font></div>
+                    </td>
+                    <td width="9%"> 
+                      <div align="center"><font color="#00714D" size="3"><b><b><b><font color="#000000"> 
+                        <input type="text" name="campo33" size="4" maxlength="4">
+                        </font></b></b></b></font></div>
+                    </td>
+                    <td width="8%"> 
+                      <div align="center"><font color="#00714D" size="3"><b><b><b><font color="#000000"> 
+                        <input type="text" name="campo332" size="4" maxlength="4">
+                        </font></b></b></b></font></div>
+                    </td>
+                    <td width="23%"> 
+                      <div align="center"><font color="#00714D" size="3"><b><b><b><font color="#000000"> 
+                        <input type="text" name="campo352" size="25" maxlength="80" onBlur="this.value = convertTildes(this.value);">
+                        </font></b></b></b></font></div>
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td width="35%"> 
+                      <div align="center"><font color="#00714D" size="3"><b><b><b><font color="#000000"> 
+                        <input type="text" name="campo312" size="20" maxlength="30">
+                        </font></b></b></b></font></div>
+                    </td>
+                    <td width="25%"> 
+                      <div align="center"><font color="#00714D" size="3"><b><b><b><font color="#000000"> 
+                        <input type="text" name="campo322" size="20" maxlength="50"  onBlur="this.value = convertTildes(this.value);">
+                        </font></b></b></b></font></div>
+                    </td>
+                    <td width="9%"> 
+                      <div align="center"><font color="#00714D" size="3"><b><b><b><font color="#000000"> 
+                        <input type="text" name="campo333" size="4" maxlength="4">
+                        </font></b></b></b></font></div>
+                    </td>
+                    <td width="8%"> 
+                      <div align="center"><font color="#00714D" size="3"><b><b><b><font color="#000000"> 
+                        <input type="text" name="campo3322" size="4" maxlength="4">
+                        </font></b></b></b></font></div>
+                    </td>
+                    <td width="23%"> 
+                      <div align="center"><font color="#00714D" size="3"><b><b><b><font color="#000000"> 
+                        <input type="text" name="campo3522" size="25" maxlength="80" onBlur="this.value = convertTildes(this.value);">
+                        </font></b></b></b></font></div>
+                    </td>
+                  </tr>
+                </table>
+                <hr size="2" width="640">
+                <p><b><font size="3">III. EXPERIENCIA</font></b></p>
+                <table width="660" border="1" height="147">
+                  <tr> 
+                    <td colspan="9"><b>Haga referencia a la experiencia actual 
+                      (la m&aacute;s representativa)</b></td>
+                  </tr>
+                  <tr> 
+                    <td rowspan="2" width="22%"> 
+                      <div align="center"><b>Entidad</b></div>
+                    </td>
+                    <td rowspan="2" colspan="2"><font size="3"><b>Fechas <font size="2">(mm-aaaa)</font><br>
+                      Desde&nbsp;&nbsp;&nbsp;Hasta</b></font></td>
+                    <td rowspan="2" width="7%"> 
+                      <div align="center"><b>Cargo</b></div>
+                    </td>
+                    <td colspan="3"> 
+                      <div align="center"><b>Experiencia</b></div>
+                    </td>
+                    <td rowspan="2" width="9%"> 
+                      <div align="center"><b>Jefe Inmediato</b></div>
+                    </td>
+                    <td rowspan="2" width="17%"> 
+                      <div align="center"> 
+                        <p><b>Tel. del Jefe</b></p>
+                        <p><b>(N&uacute;mero y extensi&oacute;n) </b></p>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td width="7%"> 
+                      <div align="center"><b>Laboral</b></div>
+                    </td>
+                    <td width="8%"> 
+                      <div align="center"><b>Docente</b></div>
+                    </td>
+                    <td width="11%"> 
+                      <div align="center"><b>Investigativa</b></div>
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td width="22%" height="22"> 
+                      <div align="center"><font size="3"> 
+                        <input type="text" name="campo412" size="15" maxlength="40" >
+                        </font></div>
+                    </td>
+                    <td width="9%" height="22"> 
+                      <div align="center"><font color="#00714D" size="3"><b><b><b><font color="#00714D" size="3"><b><b><b><font color="#000000"> 
+                        <input type="text" name="campo422" size="5" maxlength="7" >
+                        </font></b></b></b></font></b></b></b></font></div>
+                    </td>
+                    <td width="10%" height="22"> 
+                      <div align="center"><font color="#00714D" size="3"><b><b><b><font color="#00714D" size="3"><b><b><b><font color="#000000"> 
+                        <input type="text" name="campo423" size="5" maxlength="7" >
+                        </font></b></b></b></font></b></b></b></font></div>
+                    </td>
+                    <td width="7%" height="22"><font size="3"> 
+                      <input type="text" name="campo442" size="10" maxlength="40">
+                      </font></td>
+                    <td width="7%" height="22"> 
+                      <div align="center"><font color="#000000" size="3"> 
+                        <input type="radio" name="campo45" value="L">
+                        </font></div>
+                    </td>
+                    <td width="8%" height="22"> 
+                      <div align="center"><font color="#000000" size="3"> 
+                        <input type="radio" name="campo45" value="L">
+                        </font></div>
+                    </td>
+                    <td width="11%" height="22"> 
+                      <div align="center"><font color="#000000" size="3"> 
+                        <input type="radio" name="campo45" value="L">
+                        </font></div>
+                    </td>
+                    <td width="9%" height="22"><font size="3"> 
+                      <input type="text" name="campo462" size="15" maxlength="40" onBlur="this.value = convertTildes(this.value);">
+                      </font></td>
+                    <td width="17%" height="22"> 
+                      <div align="center"><font color="#00714D" size="3"><b><b><b><b><b><b><font color="#000000"> 
+                        <input type="text" name="campo472" size="10" maxlength="25" >
+                        </font></b></b></b></b></b></b></font></div>
+                    </td>
+                  </tr>
+                </table>
+                <p>&nbsp;</p>
+              </td>
+            </tr>
+            <%if(tipo.equals("T")){%>
+            <%
+}
+%>
+            <tr> 
+              <td colspan="4"> 
+                <p>Si es posible adjunte copia de sus trabajos más relevantes. 
+                  Indique la entidad en la que hizo sus trabajos o investigaciones 
+                  y el nombre de las personas que le colaboraron o lo asesoraron; 
+                  así mismo indique si alguno de estos trabajos ha sido publicado 
+                  y en qué medio.</p>
+              </td>
+            </tr>
+            <tr> 
+              <td colspan="4"><b>&iquest;Ha sido usted objeto de distinciones 
+                y premios (acad&eacute;micos, profesionales u otros), y en caso 
+                dado, en cu&aacute;les?</b></td>
+            </tr>
+            <tr> 
+              <td colspan="2"> 
+                <div align="center"><b>Distincion</b></div>
+              </td>
+              <td width="234"> 
+                <div align="center"><b>Entidad</b></div>
+              </td>
+              <td width="285"> 
+                <div align="center"><b>A&ntilde;o</b></div>
+              </td>
+            </tr>
+            <tr> 
+              <td colspan="2"> 
+                <div align="center"><font size="3"> 
+                  <input type="text" name="campo482" maxlength="60" size="35">
+                  </font></div>
+              </td>
+              <td width="234"> 
+                <div align="center"><font size="3"> 
+                  <input type="text" name="campo492" size="35" maxlength="60">
+                  </font></div>
+              </td>
+              <td width="285"> 
+                <div align="center"><font size="3"> 
+                  <input type="text" name="campo502" size="4" maxlength="4">
+                  </font></div>
+              </td>
+            </tr>
+            <tr> 
+              <td colspan="2"> 
+                <div align="center"><font size="3"> 
+                  <input type="text" name="campo4822" maxlength="60" size="35">
+                  </font></div>
+              </td>
+              <td width="234"> 
+                <div align="center"><font size="3"> 
+                  <input type="text" name="campo4922" size="35" maxlength="60">
+                  </font></div>
+              </td>
+              <td width="285"> 
+                <div align="center"><font size="3"> 
+                  <input type="text" name="campo5022" size="4" maxlength="4">
+                  </font></div>
+              </td>
+            </tr>
+            <tr> 
+              <td colspan="4">&nbsp;</td>
+            </tr>
+            <tr> 
+              <td colspan="4"><strong><font color="#990000"> <font color="#000000">Califique 
+                su conocimiento de idiomas diferentes al espa&ntilde;ol, de acuerdo 
+                con la siguiente convenci&oacute;n: MUY BIEN, BIEN, REGULAR</font></font></strong></td>
+            </tr>
+            <tr> 
+              <td colspan="4"> 
+                <table width="660" border="1">
+                  <tr > 
+                    <td width="26%"> 
+                      <div align="center"><font size="3"><b>IDIOMA</b></font></div>
+                    </td>
+                    <td width="24%"> 
+                      <div align="center"><font size="3"><b>COMPRENDE AL LEER</b></font></div>
+                    </td>
+                    <td width="21%"> 
+                      <div align="center"><font size="3"><b>COMPRENDE AL OIR</b></font></div>
+                    </td>
+                    <td width="14%"> 
+                      <div align="center"><font size="3"><b>HABLA</b></font></div>
+                    </td>
+                    <td width="15%"> 
+                      <div align="center"><font size="3"><b>ESCRIBE</b></font></div>
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td><font size="3"> 
+                      <select name="select6">
+                        <option value="" selected></option>
+                        <option value="Ingles"><font size="3">Ingles</font></option>
+                        <option value="Frances"><font size="3">Frances</font></option>
+                        <option value="Aleman"><font size="3">Aleman</font></option>
+                        <option value="Italiano"><font size="3">Italiano</font></option>
+                        <option value="Portugues"><font size="3">Portugues</font></option>
+                      </select>
+                      </font></td>
+                    <td><font size="3"> 
+                      <select name="select8">
+                        <option value="" selected></option>
+                        <option value="0-20" selected><font size="3">0-20%</font></option>
+                        <option value="21-40"><font size="3">21-40%</font></option>
+                        <option value="41-60"><font size="3">41-60%</font></option>
+                        <option value="61-80"><font size="3">61-80%</font></option>
+                        <option value="81-100"><font size="3">81-100%</font></option>
+                      </select>
+                      </font></td>
+                    <td><font size="3"> 
+                      <select name="select10">
+                        <option value="" selected></option>
+                        <option value="0-20" selected><font size="3">0-20%</font></option>
+                        <option value="21-40"><font size="3">21-40%</font></option>
+                        <option value="41-60"><font size="3">41-60%</font></option>
+                        <option value="61-80"><font size="3">61-80%</font></option>
+                        <option value="81-100"><font size="3">81-100%</font></option>
+                      </select>
+                      </font></td>
+                    <td><font size="3"> 
+                      <select name="select12">
+                        <option value="" selected></option>
+                        <option value="0-20" selected><font size="3">0-20%</font></option>
+                        <option value="21-40"><font size="3">21-40%</font></option>
+                        <option value="41-60"><font size="3">41-60%</font></option>
+                        <option value="61-80"><font size="3">61-80%</font></option>
+                        <option value="81-100"><font size="3">81-100%</font></option>
+                      </select>
+                      </font></td>
+                    <td><font size="3"> 
+                      <select name="select14">
+                        <option value="" selected></option>
+                        <option value="0-20" selected><font size="3">0-20%</font></option>
+                        <option value="21-40"><font size="3">21-40%</font></option>
+                        <option value="41-60"><font size="3">41-60%</font></option>
+                        <option value="61-80"><font size="3">61-80%</font></option>
+                        <option value="81-100"><font size="3">81-100%</font></option>
+                      </select>
+                      </font></td>
+                  </tr>
+                  <tr> 
+                    <td><font size="3"> 
+                      <select name="select7">
+                        <option value="" selected></option>
+                        <option value="Ingles"><font size="3">Ingles</font></option>
+                        <option value="Frances"><font size="3">Frances</font></option>
+                        <option value="Aleman"><font size="3">Aleman</font></option>
+                        <option value="Italiano"><font size="3">Italiano</font></option>
+                        <option value="Portugues"><font size="3">Portugues</font></option>
+                      </select>
+                      </font></td>
+                    <td><font size="3"> 
+                      <select name="select9">
+                        <option value="" selected></option>
+                        <option value="0-20" selected><font size="3">0-20%</font></option>
+                        <option value="21-40"><font size="3">21-40%</font></option>
+                        <option value="41-60"><font size="3">41-60%</font></option>
+                        <option value="61-80"><font size="3">61-80%</font></option>
+                        <option value="81-100"><font size="3">81-100%</font></option>
+                      </select>
+                      </font></td>
+                    <td><font size="3"> 
+                      <select name="select11">
+                        <option value="" selected></option>
+                        <option value="0-20" selected><font size="3">0-20%</font></option>
+                        <option value="21-40"><font size="3">21-40%</font></option>
+                        <option value="41-60"><font size="3">41-60%</font></option>
+                        <option value="61-80"><font size="3">61-80%</font></option>
+                        <option value="81-100"><font size="3">81-100%</font></option>
+                      </select>
+                      </font></td>
+                    <td><font size="3"> 
+                      <select name="select13">
+                        <option value="" selected></option>
+                        <option value="0-20" selected><font size="3">0-20%</font></option>
+                        <option value="21-40"><font size="3">21-40%</font></option>
+                        <option value="41-60"><font size="3">41-60%</font></option>
+                        <option value="61-80"><font size="3">61-80%</font></option>
+                        <option value="81-100"><font size="3">81-100%</font></option>
+                      </select>
+                      </font></td>
+                    <td><font size="3"> 
+                      <select name="select15">
+                        <option value="" selected></option>
+                        <option value="0-20" selected><font size="3">0-20%</font></option>
+                        <option value="21-40"><font size="3">21-40%</font></option>
+                        <option value="41-60"><font size="3">41-60%</font></option>
+                        <option value="61-80"><font size="3">61-80%</font></option>
+                        <option value="81-100"><font size="3">81-100%</font></option>
+                      </select>
+                      </font></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr> 
+              <td height="15" colspan="4"> 
+                <div align="left"></div>
+                <hr size="2" width="640">
+              </td>
+            </tr>
+            <tr> 
+              <td colspan="4">&nbsp; </td>
+            </tr>
+            <tr> 
+              <td colspan="4"> 
+                <hr size="2" width="640">
+              </td>
+            </tr>
+            <tr> 
+              <td colspan="4"> 
+                <div align="center"> 
+                  <input name="tipoest" type="hidden" id="tipoest" value="<%=pginsc.elementAt(6)%>">
+                  <input name="numreg" type="hidden" id="numreg" value="<%=pginsc.elementAt(4)%>">
+                  <input name="nom_est" type="hidden" id="nom_est" value="<%=pginsc.elementAt(2)%>">
+                  <input name="ref" type="hidden" id="ref" value="<%=pginsc.elementAt(0)%>">
+                  <input name="bi" type="submit" class="boton" value="Enviar Solicitud de Admisión" onClick="javascript: return validar();">
+                </div>
+              </td>
+            </tr>
+            <tr> 
+              <td colspan="4">&nbsp;</td>
+            </tr>
+          </table>
+        </form>
+      </div>
+      
+    </td>
+  </tr>
+</table>
+</body>
+</html>
+<%
+}else
+    response.sendRedirect("ErrorPago");
+%>

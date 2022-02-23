@@ -1,0 +1,37 @@
+ /*    if (estudiante.elementAt(3).equals("13")) {
+                    programa = "INGENIERIA CIVIL";
+                    adjuntar = new eci.adjuntar(nombre,"C:/Sun/doc_pregrado/20102/civil");
+                    ruta = "C:/Sun/doc_pregrado/20102/civil" ;
+                } else if (estudiante.elementAt(3).equals("14")) {
+                    programa = "INGENIERIA ELECTRICA";
+                    adjuntar = new eci.adjuntar("documentacion", "C:/Sun/doc_pregrado/20102/electrica");
+                    ruta = "C:/Sun/doc_pregrado/20102/electrica";
+                } else if (estudiante.elementAt(3).equals("15")) {
+                    programa = "INGENIERIA DE SISTEMAS";
+                    adjuntar = new eci.adjuntar("documentacion", "C:/Sun/doc_pregrado/20102/sistemas");
+                    ruta = "C:/Sun/doc_pregrado/20102/sistemas";
+                } else if (estudiante.elementAt(3).equals("16")) {
+                    programa = "INGENIERIA INDUSTRIAL";
+                    adjuntar = new eci.adjuntar("documentacion", "C:/Sun/doc_pregrado/20102/industrial");
+                    ruta = "C:/Sun/doc_pregrado/20102/industrial";
+                } else if (estudiante.elementAt(3).equals("17")) {
+                    programa = "INGENIERIA ELECTRONICA";
+                    adjuntar = new eci.adjuntar("documentacion", "C:/Sun/doc_pregrado/20102/electronica");
+                    ruta = "C:/Sun/doc_pregrado/20102/electronica";
+                } else if (estudiante.elementAt(3).equals("18")) {
+                    programa = "ECONOMIA";
+                    adjuntar = new eci.adjuntar("documentacion", "C:/Sun/doc_pregrado/20102/economia");
+                    ruta = "C:/Sun/doc_pregrado/20102/economia";
+                } else if (estudiante.elementAt(3).equals("19")) {
+                    programa = "ADMINISTRACION";
+                    adjuntar = new eci.adjuntar("documentacion", "C:/Sun/doc_pregrado/20102/administracion");
+                    ruta = "C:/Sun/doc_pregrado/20102/administracion";
+                } else if (estudiante.elementAt(3).equals("20")) {
+                    programa = "MATEMATICAS";
+                    adjuntar = new eci.adjuntar("documentacion", "C:/Sun/doc_pregrado/20102/matematicas");
+                    ruta = "C:/Sun/doc_pregrado/20102/matematicas";
+                } else if (estudiante.elementAt(3).equals("260")) {
+                    programa = "INGENIERIA MECANICA";
+                    adjuntar = new eci.adjuntar("documentacion", "C:/Sun/doc_pregrado/20102/mecanica");
+                    ruta = "C:/Sun/doc_pregrado/20102/mecanica";
+                }*/

@@ -1,0 +1,112 @@
+ if(isNaN(document.forminsc.campo26.value )){
+                    alert("El campo de Valor Mensual Pagado debe ser un número");
+                    document.forminsc.campo26.style.backgroundColor= '#ffcc00';
+                    document.getElementById("campo26").focus();
+                    return false;
+                }else{
+                    for (i=0;i<document.forminsc.campo26.value.length;i++) {
+                        if(document.forminsc.campo26.value.charAt(i) == '.'){
+                            alert("En el campo Valor Mensual Pagado no coloque puntos ni comas");
+                            document.forminsc.campo26.style.backgroundColor= '#ffcc00';
+                            document.getElementById("campo26").focus();
+                            return false;
+                        }
+                    }
+                }
+
+
+
+**************
+  document.forminsc.ingresosp.style.backgroundColor= '#D8E6F1';
+                document.forminsc.ingresosm.style.backgroundColor= '#D8E6F1';
+                if(isNaN(document.forminsc.ingresosp.value )){
+                    alert("Los ingresos deben ser un número");
+                    document.forminsc.ingresosp.style.backgroundColor= '#ffcc00';
+                    document.getElementById("ingresosp").focus();
+                    return false;
+                }else{
+                    for (i=0;i<document.forminsc.ingresosp.value.length;i++) {
+                        if(document.forminsc.íngresosp.value.charAt(i) == '.'){
+                            alert("En el campo de ingresos no coloque puntos ni comas");
+                            document.forminsc.ingresosp.style.backgroundColor= '#ffcc00';
+                            document.getElementById("ingresosp").focus();
+                            return false;
+                        }
+                    }
+                    //document.forminsc.campo65.value = document.forminsc.campo65.value.replace('.', '');
+                }
+
+
+********************
+
+
+ if(isNaN(document.forminsc.ingresosm.value )){
+                    alert("Los ingresos deben ser un número");
+                    document.forminsc.ingresosm.style.backgroundColor= '#ffcc00';
+                    document.getElementById("ingresosm").focus();
+                    return false;
+                }else{
+                    for (i=0;i<document.forminsc.ingresosm.value.length;i++) {
+                        if(document.forminsc.ingresosm.value.charAt(i) == '.'){
+                            alert("En el campo de ingresos no coloque puntos ni comas");
+                            document.forminsc.ingresosm.style.backgroundColor= '#ffcc00';
+                            document.getElementById("ingresosm").focus();
+                            return false;
+                        }
+                    }
+                    //document.forminsc.campo82.value = document.forminsc.campo82.value.replace('.', '');
+                }
+
+
+
+
+
+**************
+
+
+                if(isNaN(document.forminsc.campo27.value )){
+                    alert("Año debe ser un número");
+                    document.forminsc.campo27.style.backgroundColor= '#ffcc00';
+                    document.getElementById("campo27").focus();
+                    return false;
+                }
+              
+
+
+******FORMUPREGRADO
+
+
+                document.forminsc.campo65.style.backgroundColor= '#D8E6F1';
+                document.forminsc.campo82.style.backgroundColor= '#D8E6F1';
+                if(isNaN(document.forminsc.campo65.value )){
+                    alert("Los ingresos deben ser un número");
+                    document.forminsc.campo65.style.backgroundColor= '#ffcc00';
+                    document.getElementById("campo65").focus();
+                    return false;
+                }else{
+                    for (i=0;i<document.forminsc.campo65.value.length;i++) {
+                        if(document.forminsc.campo65.value.charAt(i) == '.'){
+                            alert("En el campo de ingresos no coloque puntos ni comas");
+                            document.forminsc.campo65.style.backgroundColor= '#ffcc00';
+                            document.getElementById("campo65").focus();
+                            return false;
+                        }
+                    }
+                    //document.forminsc.campo65.value = document.forminsc.campo65.value.replace('.', '');
+                }
+                if(isNaN(document.forminsc.campo82.value )){
+                    alert("Los ingresos deben ser un número");
+                    document.forminsc.campo82.style.backgroundColor= '#ffcc00';
+                    document.getElementById("campo82").focus();
+                    return false;
+                }else{
+                    for (i=0;i<document.forminsc.campo82.value.length;i++) {
+                        if(document.forminsc.campo82.value.charAt(i) == '.'){
+                            alert("En el campo de ingresos no coloque puntos ni comas");
+                            document.forminsc.campo82.style.backgroundColor= '#ffcc00';
+                            document.getElementById("campo82").focus();
+                            return false;
+                        }
+                    }
+                    //document.forminsc.campo82.value = document.forminsc.campo82.value.replace('.', '');
+                }
